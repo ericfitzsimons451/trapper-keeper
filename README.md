@@ -30,6 +30,6 @@
 <img width="799" alt="Screen Shot 2019-04-01 at 2 59 15 PM" src="https://user-images.githubusercontent.com/39415039/55359304-c1802200-548e-11e9-93a6-69ae1b766e44.png">
 
 ## Contributors
-[Eric Fitzsimons](https://github.com/ericfitzsimons451)
-[Gabe Inzurriaga](https://github.com/inzurriaga)
+[Eric Fitzsimons](https://github.com/ericfitzsimons451) \
+[Gabe Inzurriaga](https://github.com/inzurriaga) \
 [Tom Wilhoit](https://github.com/tomwilhoit)
