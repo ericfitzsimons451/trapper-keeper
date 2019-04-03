@@ -8,9 +8,9 @@ export const fetchAllNotes = (url) => {
             if (response.status !== 200) {
                 throw new Error(response.statusText)
             } 
-            const data = await response.json()
+            const notes = await response.json()
             dispatch(isLoading(false))
-            dispatch(getAllNotes(data))
+            dispatch(getAllNotes(notes))
         } catch (error) {
             dispatch(hasError(error.message))
         }

@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
 import { NoteForm } from '../NoteForm/NoteForm'
 import { NavLink, Route } from 'react-router-dom'
-import { addNote, getAllNotes } from '../../actions/index'
 import './App.scss';
 import { connect } from 'react-redux'
-import { fetchAllNotes } from '../../Thunks/fetchAllNotes' 
+import { fetchAllNotes } from '../../Thunks/fetchAllNotes'
 
 class App extends Component {
   async componentDidMount() {
-  const url = 'http://localhost:3000/api/v1/notes'
-  this.props.fetchAllNotes(url)
+    const url = 'http://localhost:3000/api/v1/notes'
+    this.props.fetchAllNotes(url)
   }
 
-  
   render() {
     return (
       <div className="App">
         <NavLink to='/notes'>Create New Note</NavLink>
-        <NoteForm addNewNote={this.props.addNote} />
         TRAPPER KEEEEEEEPRRRR
         <Route path='/notes' component={NoteForm} />
       </div>
@@ -28,7 +25,7 @@ class App extends Component {
 export const mapStateToProps = state => ({
   notes: state.notes,
   errorMsg: state.errorMsg,
-  isLoading: state.bool
+  isLoading: state.isLoading
 })
 
 export const mapDispatchtoProps = dispatch => ({
