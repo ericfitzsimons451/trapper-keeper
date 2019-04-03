@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class NoteForm extends Component {
+export class NoteForm extends Component {
     constructor() {
         super()
         this.state = {

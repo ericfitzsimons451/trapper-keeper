@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NoteForm from '../NoteForm/NoteForm'
+import { NoteForm } from '../NoteForm/NoteForm'
 import { NavLink, Route } from 'react-router-dom'
 import { addNote, getAllNotes } from '../../actions/index'
 import './App.scss';
@@ -16,9 +16,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <NavLink>Create New Note</NavLink> */}
-        {/* <NoteForm addNewNote={this.props.addNote} /> */}
+        <NavLink to='/notes'>Create New Note</NavLink>
+        <NoteForm addNewNote={this.props.addNote} />
         TRAPPER KEEEEEEEPRRRR
+        <Route path='/notes' component={NoteForm} />
       </div>
     );
   }
