@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import { postNote } from '../../Thunks/postNote'
 import { Link } from "react-router-dom"
-import {ReactComponent as UnChecked } from "../../images/blank-square.svg"
-import {ReactComponent as Xmark } from "../../images/close-button.svg"
-import {ReactComponent as Checked } from "../../images/check-box.svg"
  
 export class NoteForm extends Component {
 	constructor() {
@@ -16,14 +13,14 @@ export class NoteForm extends Component {
 
 	addNote = () => {
 		this.setState({
-			body: [...this.state.body, {text: "hello", checked: false}]
+			body: [...this.state.body, {id: Date.now(), text: "hello", checked: false}]
 		})
 	}
 
 	deleteNote = (e) => {
 		const { id } = e.target.parentElement
-		let newBody = this.state.body.filter((note, index) => {
-			return index !== parseInt(id)
+		const newBody = this.state.body.filter((note) => {
+			return note.id !== parseInt(id)
 		})
 		this.setState({
 			body: newBody
@@ -31,13 +28,35 @@ export class NoteForm extends Component {
 	}
 
 	checkedBox = (e) => {
-		console.log(e.target.parentElement)
+		const { id } = e.target.parentElement
+		const newBody = this.state.body.map((note) => {
+			if(note.id === parseInt(id)){
+				return {text: note.text, checked: !note.checked, id: note.id}
+			}
+			return note
+		})
+		this.setState({
+			body: newBody
+		})
 	}
 
-	handleChange = (e) => {
-		const { name, value } = e.target
-		this.setState({ [name]: value })
+	textChange = (e) => {
+		const { id } = e.target.parentElement
+		const { value } = e.target
+		const newBody = this.state.body.map((note) => {
+			if(note.id === parseInt(id)){
+				return {text: value, checked: note.checked, id: note.id}
+			}
+			return note
+		})
+		this.setState({
+			body: newBody
+		})
 	}
+
+	changeTitle = () => {
+
+	} 
 	
 	test = () => {
 		console.log("hello")
@@ -49,19 +68,33 @@ export class NoteForm extends Component {
 	}
 
 	render() {
+		const { body } = this.state
+		const filteredUnChecked = body.filter(note => !note.checked)
+		const filteredChecked = body.filter(note => note.checked)
+		const unchecked = filteredUnChecked.map((text)=> {
+			return (<div onChange={this.test} key={text.id} id={text.id} className="text">
+						<div onClick={this.checkedBox} className="uncheckbox"></div>
+						<input  name='body' onChange={this.textChange} value={text.text}/>
+						<div onClick={this.deleteNote} className="xmark"></div>
+					</div>)
+		})
+		const checked = filteredChecked.map((text)=> {
+			return (<div onChange={this.test} key={text.id} id={text.id} className="text">
+						<div onClick={this.checkedBox} className="checkbox"></div>
+						<input  name='body' onChange={this.textChange} value={text.text}/>
+						<div onClick={this.deleteNote} className="xmark"></div>
+					</div>)
+		})
 		return (
-			<form class="note-form" onSubmit={this.handleSubmit}>
-				<input onChange={this.handleChange} name='title' value={this.state.title} placeholder="title"/>
+			<form className="note-form" onSubmit={this.handleSubmit}>
+				<input onChange={this.changeTitle} name='title' value={this.state.title} placeholder="title"/>
 				{
-					this.state.body.map((text, index)=> {
-						return (<div onChange={this.test} id={index} className="text">
-									<div onClick={this.checkedBox} className="uncheckbox" id={index}></div>
-									<input  name='body' value={text.text} id={index}/>
-									<div onClick={this.deleteNote} className="xmark"></div>
-								</div>)
-					})
+					unchecked
 				}
 				<button onClick={this.addNote}>add note</button>
+				{
+					checked
+				}
 				<nav>
 					<Link to="/"><button>Save Note</button></Link>
 				</nav>
