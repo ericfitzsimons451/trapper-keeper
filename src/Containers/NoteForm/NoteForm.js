@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { postNote } from '../../Thunks/postNote'
 import { Link } from "react-router-dom"
+import { connect } from 'react-redux';
+import { fetchAllNotes } from '../../Thunks/fetchAllNotes';
  
 export class NoteForm extends Component {
 	constructor() {
@@ -9,6 +11,11 @@ export class NoteForm extends Component {
 			title: '',
 			body: []
 		}
+	}
+
+	async componentDidMount () {
+		const url = 'http://localhost:3000/api/v1/notes'
+		await fetchAllNotes(url);
 	}
 
 	addNote = (e) => {
@@ -110,8 +117,14 @@ export class NoteForm extends Component {
 	}
 }
 
-export const mapDispatchToProps = (dispatch) => ({
-
+export const mapStateToProps = state => ({
+	notes: state,
+	errorMsg: state.errorMsg,
+	isLoading: state.isLoading,
 })
 
-export default NoteForm
+export const mapDispatchToProps = (dispatch) => ({
+	fetchAllNotes: (url) => dispatch(fetchAllNotes(url)),
+})
+
+export default connect(mapStateToProps, mapStateToProps)(NoteForm)
