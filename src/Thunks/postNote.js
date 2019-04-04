@@ -1,10 +1,16 @@
 import { addNote, isLoading, hasError } from "../actions";
-
 export const postNote = (newNote) => {
-    return async (dispatch) => {
+    const option = {
+        method: "POST",
+        body: JSON.stringify(newNote),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+  return async (dispatch) => { 
         try {
             dispatch(isLoading(true))
-            const response = await fetch('http://localhost:3000/api/v1/notes')
+            const response = await fetch('http://localhost:3000/api/v1/notes', option)
             if (!response.ok) {
                 throw new Error(response.statusText)
             }

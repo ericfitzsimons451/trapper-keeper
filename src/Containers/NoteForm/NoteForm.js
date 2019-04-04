@@ -13,11 +13,6 @@ export class NoteForm extends Component {
 		}
 	}
 
-	async componentDidMount () {
-		const url = 'http://localhost:3000/api/v1/notes'
-		await fetchAllNotes(url);
-	}
-
 	addNote = (e) => {
 		const { id } = e.target.parentElement
 		if(e.target.value !== null){

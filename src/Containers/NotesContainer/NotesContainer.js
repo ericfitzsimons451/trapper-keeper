@@ -12,7 +12,7 @@ export class NotesContainer extends Component {
   }
 
   render() {
-    if (this.props.notes) {
+    if (this.props.notes.length > 0) {
       return (
         <ul>
           {this.props.notes.map((note,index ) => {
@@ -21,8 +21,8 @@ export class NotesContainer extends Component {
                 <li>{note.id}</li>
                 <button onClick={() => {this.props.deleteNote(note.id)}}>DELETE ME</button>
                 <li>
-                  {note.body.map((body,index) => {
-                    return <div key={index}>{body.context}</div>;
+                  {note.listItem.map(body => {
+                    return <div key={body.id}>{body.text}</div>;
                   })}
                 </li>
               </div>
