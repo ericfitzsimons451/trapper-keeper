@@ -11,8 +11,8 @@ export const postNote = (newNote) => {
     return async (dispatch) => {
         try {
             dispatch(isLoading(true))
-            const response = await fetch('http://localhost:3000/api/v1/notes', option)
-            if (response.status !== 201) {
+            const response = await fetch('http://localhost:3000/api/v1/notes')
+            if (!response.ok) {
                 throw new Error(response.statusText)
             }
             const note = await response.json()
