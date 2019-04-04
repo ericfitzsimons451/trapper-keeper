@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { postNote } from '../../Thunks/postNote'
 import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
-
+import { fetchAllNotes } from '../../Thunks/fetchAllNotes'
  
 export class NoteForm extends Component {
 	constructor() {
