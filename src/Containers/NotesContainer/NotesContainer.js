@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchAllNotes } from "../../Thunks/fetchAllNotes";
+import { fetchAllNotes} from "../../Thunks/fetchAllNotes";
+import { deleteNote } from "../../Thunks/deleteNote"
 
 export class NotesContainer extends Component {
  
@@ -14,10 +15,11 @@ export class NotesContainer extends Component {
     if (this.props.notes.length > 0) {
       return (
         <ul>
-          {this.props.notes.map((note) => {
+          {this.props.notes.map((note,index ) => {
             return (
-              <div>
+              <div key={index}>
                 <li>{note.id}</li>
+                <button onClick={() => {this.props.deleteNote(note.id)}}>DELETE ME</button>
                 <li>
                   {note.listItem.map(body => {
                     return <div key={body.id}>{body.text}</div>;
@@ -41,7 +43,9 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-  fetchAllNotes: url => dispatch(fetchAllNotes(url))
+  fetchAllNotes: url => dispatch(fetchAllNotes(url)),
+  deleteNote: note => dispatch(deleteNote(note))
+
 });
 
 export default connect(
