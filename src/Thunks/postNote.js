@@ -1,4 +1,4 @@
-import { addNote, isLoading, hasError } from '../actions'
+import { addNote, isLoading, hasError } from "../actions";
 
 export const postNote = (newNote) => {
     return async (dispatch) => {
@@ -14,5 +14,7 @@ export const postNote = (newNote) => {
         } catch (error) {
             dispatch(hasError(error.message))
         }
+
     }
-}
+  };
+};

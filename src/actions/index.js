@@ -3,6 +3,11 @@ export const addNote = (note) => ({
   note
 })
 
+export const deleteCard = (id) => ({
+  type: 'DELETE_CARD',
+  id
+})
+
 export const getAllNotes = (notes) => ({
   type: 'GET_ALL_NOTES',  
   notes
@@ -17,3 +22,4 @@ export const isLoading = (bool) => ({
   type: 'IS_LOADING',
   isLoading: bool
 })
+
