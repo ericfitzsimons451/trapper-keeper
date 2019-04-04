@@ -8,18 +8,14 @@ jest.mock('../../Thunks/fetchAllNotes');
 describe("App", () => {
   let wrapper;
   const mockFunc = jest.fn();
-  beforeEach(() => { wrapper = shallow(<App fetchAllNotes={mockFunc}/>)
-  
+
+  beforeEach(() => { 
+    wrapper = shallow(<App />)
   })
 
   it.skip("should match the snapshot with all data passed in correctly", () => {
     expect(wrapper).toMatchSnapshot();
   });
-
-
-  it.skip("should invoke fetchAllNotes when componentDidMount is fired", () => {
-    expect(fetchAllNotes).toHaveBeenCalled();
-  })
 
   it("should map state to props", () => {
     const mockStore = {

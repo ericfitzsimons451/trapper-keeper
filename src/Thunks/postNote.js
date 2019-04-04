@@ -1,13 +1,6 @@
 import { addNote, isLoading, hasError } from '../actions'
 
 export const postNote = (newNote) => {
-    const option = {
-        method: "POST",
-        body: JSON.stringify(newNote),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }
     return async (dispatch) => {
         try {
             dispatch(isLoading(true))
