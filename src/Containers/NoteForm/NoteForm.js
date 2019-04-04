@@ -11,10 +11,14 @@ export class NoteForm extends Component {
 		}
 	}
 
-	addNote = () => {
-		this.setState({
-			body: [...this.state.body, {id: Date.now(), text: "hello", checked: false}]
-		})
+	addNote = (e) => {
+		const { id } = e.target.parentElement
+		console.log("add", id)
+		if(e.target.value !== null){
+			this.setState({
+				body: [...this.state.body, {id: parseInt(id), text: e.target.value, checked: false}]
+			})
+		}
 	}
 
 	deleteNote = (e) => {
@@ -54,8 +58,11 @@ export class NoteForm extends Component {
 		})
 	}
 
-	changeTitle = () => {
-
+	changeTitle = (e) => {
+		const title = e.target.value
+		this.setState({
+			title 
+		})
 	} 
 	
 	test = () => {
@@ -69,29 +76,33 @@ export class NoteForm extends Component {
 
 	render() {
 		const { body } = this.state
+		const id = Date.now()
 		const filteredUnChecked = body.filter(note => !note.checked)
 		const filteredChecked = body.filter(note => note.checked)
 		const unchecked = filteredUnChecked.map((text)=> {
 			return (<div onChange={this.test} key={text.id} id={text.id} className="text">
 						<div onClick={this.checkedBox} className="uncheckbox"></div>
-						<input  name='body' onChange={this.textChange} value={text.text}/>
+						<input  placeholder="take a note" name='body' onChange={this.textChange} value={text.text}/>
 						<div onClick={this.deleteNote} className="xmark"></div>
 					</div>)
 		})
 		const checked = filteredChecked.map((text)=> {
 			return (<div onChange={this.test} key={text.id} id={text.id} className="text">
 						<div onClick={this.checkedBox} className="checkbox"></div>
-						<input  name='body' onChange={this.textChange} value={text.text}/>
+						<input  placeholder="take a note" name='body' onChange={this.textChange} value={text.text}/>
 						<div onClick={this.deleteNote} className="xmark"></div>
 					</div>)
 		})
+		unchecked.push(<div onChange={this.test} key={id} id={id} className="text">
+			<div className="add"></div>
+			<input  placeholder="take a note" name='body' onChange={this.addNote} value={null}/>
+		</div>)
 		return (
 			<form className="note-form" onSubmit={this.handleSubmit}>
 				<input onChange={this.changeTitle} name='title' value={this.state.title} placeholder="title"/>
 				{
 					unchecked
 				}
-				<button onClick={this.addNote}>add note</button>
 				{
 					checked
 				}
