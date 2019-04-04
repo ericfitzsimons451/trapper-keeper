@@ -10,7 +10,7 @@ describe("Header", () => {
 	});
 
 
-	it("should match the snapshot with all data passed in correctly", () => {
+	it.skip("should match the snapshot with all data passed in correctly", () => {
 		expect(wrapper).toMatchSnapshot();
     })
 })
