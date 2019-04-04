@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NoteForm } from '../NoteForm/NoteForm'
+import NoteForm from '../NoteForm/NoteForm'
 import { NavLink, Route } from 'react-router-dom'
 import './App.scss';
 import { connect } from 'react-redux'

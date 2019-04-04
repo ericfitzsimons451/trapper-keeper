@@ -5,7 +5,7 @@ export const fetchAllNotes = (url) => {
     try {
       dispatch(isLoading(true))
       const response = await fetch(url)
-      if (response.status !== 200) {
+      if (!response.ok) {
         throw new Error(response.statusText)
       }
       const notes = await response.json()
