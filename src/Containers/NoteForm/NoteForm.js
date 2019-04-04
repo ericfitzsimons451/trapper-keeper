@@ -98,7 +98,7 @@ export class NoteForm extends Component {
 		})
 		unchecked.push(<div onChange={this.test} key={id} id={id} className="text">
 			<div className="add"></div>
-			<input  placeholder="take a note" name='body' onChange={this.addNote} value={null}/>
+			<input  placeholder="take a note" name='body' onChange={this.addNote} value={''}/>
 		</div>)
 		return (
 			<form className="note-form" onSubmit={this.handleSubmit}>

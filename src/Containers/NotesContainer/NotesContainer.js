@@ -14,13 +14,13 @@ export class NotesContainer extends Component {
     if (this.props.notes) {
       return (
         <ul>
-          {this.props.notes.map((note) => {
+          {this.props.notes.map((note,index ) => {
             return (
-              <div>
+              <div key={index}>
                 <li>{note.id}</li>
                 <li>
-                  {note.body.map(body => {
-                    return <div>{body.context}</div>;
+                  {note.body.map((body,index) => {
+                    return <div key={index}>{body.context}</div>;
                   })}
                 </li>
               </div>
