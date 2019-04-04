@@ -1,0 +1,33 @@
+.note-form {
+    width: 600px;
+    padding: 10px;
+    box-shadow: 2px 2px 5px #000000;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.text {
+    display: flex;
+}
+
+.uncheckbox {
+    height: 15px;
+    width: 15px;
+    background-image: url("./images/blank-square.svg");
+    background-size: 15px 15px;
+}
+
+.checkbox {
+    height: 15px;
+    width: 15px;
+    background-image: url("./images/check-box.svg");
+    background-size: 15px 15px;
+}
+
+.xmark {
+    height: 15px;
+    width: 15px;
+    background-image: url("./images/close-button.svg");
+    background-size: 15px 15px;
+}
