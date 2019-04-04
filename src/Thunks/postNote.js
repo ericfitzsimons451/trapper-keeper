@@ -12,7 +12,7 @@ export const postNote = (newNote) => {
         try {
             dispatch(isLoading(true))
             const response = await fetch('http://localhost:3000/api/v1/notes', option)
-            if (response.status !== 201) {
+            if (!response.ok) {
                 throw new Error(response.statusText)
             }
             const note = await response.json()

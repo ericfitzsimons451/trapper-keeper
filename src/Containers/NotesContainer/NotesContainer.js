@@ -11,7 +11,7 @@ export class NotesContainer extends Component {
   }
 
   render() {
-    if (this.props.notes) {
+    if (this.props.notes.length > 0) {
       return (
         <ul>
           {this.props.notes.map((note) => {
@@ -19,8 +19,8 @@ export class NotesContainer extends Component {
               <div>
                 <li>{note.id}</li>
                 <li>
-                  {note.body.map(body => {
-                    return <div>{body.context}</div>;
+                  {note.listItem.map(body => {
+                    return <div key={body.id}>{body.text}</div>;
                   })}
                 </li>
               </div>
