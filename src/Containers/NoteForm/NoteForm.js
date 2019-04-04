@@ -64,10 +64,6 @@ export class NoteForm extends Component {
 			title 
 		})
 	} 
-	
-	test = () => {
-		console.log("hello")
-	}
 
 	handleSubmit = (e) => {
 		e.preventDefault()
@@ -113,5 +109,9 @@ export class NoteForm extends Component {
 		)
 	}
 }
+
+export const mapDispatchToProps = (dispatch) => ({
+
+})
 
 export default NoteForm
