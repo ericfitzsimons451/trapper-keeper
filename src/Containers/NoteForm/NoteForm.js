@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { postNote } from '../../Thunks/postNote'
 import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
+
  
 export class NoteForm extends Component {
 	constructor() {
@@ -10,6 +11,11 @@ export class NoteForm extends Component {
 			title: "",
 			listItem: []
 		}
+	}
+
+	async componentDidMount () {
+		const url = 'http://localhost:3000/api/v1/notes'
+		await fetchAllNotes(url);
 	}
 
 	addNote = (e) => {
@@ -115,3 +121,4 @@ export const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(null, mapDispatchToProps)(NoteForm)
+

@@ -5,6 +5,7 @@ import './App.scss';
 import { connect } from 'react-redux'
 import { fetchAllNotes } from '../../Thunks/fetchAllNotes'
 import { Header } from '../../Components/Header/Header'
+import  NotesContainer  from '../NotesContainer/NotesContainer';
 
 class App extends Component {
   async componentDidMount() {
@@ -17,8 +18,8 @@ class App extends Component {
       <div className="App">
         <Header/>
         <NavLink to='/notes'>Create New Note</NavLink>
-        TRAPPER KEEEEEEEPRRRR
         <Route path='/notes' component={NoteForm} />
+        <NotesContainer/>
       </div>
     );
   }
