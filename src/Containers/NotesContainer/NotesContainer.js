@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchAllNotes} from "../../Thunks/fetchAllNotes";
-import { deleteNote } from "../../Thunks/deleteNote"
+import { deleteNote } from "../../Thunks/deleteNote";
+import { Link } from "react-router-dom";
 
 export class NotesContainer extends Component {
  
@@ -17,7 +18,7 @@ export class NotesContainer extends Component {
         <ul>
           {this.props.notes.map((note,index ) => {
             return (
-              <div key={index}>
+              <Link to={`/notes/${note.id}`} key={index}>
                 <li>{note.id}</li>
                 <button onClick={() => {this.props.deleteNote(note.id)}}>DELETE ME</button>
                 <li>
@@ -25,7 +26,7 @@ export class NotesContainer extends Component {
                     return <div key={body.id}>{body.text}</div>;
                   })}
                 </li>
-              </div>
+              </Link>
             );
           })}
         </ul>

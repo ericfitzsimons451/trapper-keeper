@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { postNote } from '../../Thunks/postNote'
 import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
-import { fetchAllNotes } from '../../Thunks/fetchAllNotes'
+import { editNote } from '../../Thunks/updateNote'
  
 export class NoteForm extends Component {
 	constructor() {
@@ -10,6 +10,15 @@ export class NoteForm extends Component {
 		this.state = {
 			title: "",
 			listItems: []
+		}
+	}
+
+	componentDidMount () {
+		if(this.props.note){
+			this.setState({
+				title: this.props.note.title,
+				listItem: this.props.note.listItem
+			})
 		}
 	}
 
@@ -68,12 +77,21 @@ export class NoteForm extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault()
-		const {className, type } = e.target
-		console.log(e.target.type)
-		if (className === "modal" || type === "submit") {
-			this.props.history.push('/')
-			this.props.postNote(this.state)
-		  }
+		if(this.props.note){
+			const updatedNote = {
+				id: this.props.note.id,
+				title: this.state.title,
+				listItem: this.state.listItem
+			}
+			this.props.editNote(updatedNote)
+		}else{
+			const {className, type } = e.target
+			console.log(e.target.type)
+			if (className === "modal" || type === "submit") {
+				this.props.history.push('/')
+				this.props.postNote(this.state)
+				}
+		}
 	}
 
 	render() {
@@ -100,7 +118,7 @@ export class NoteForm extends Component {
 			<input  placeholder="take a note" name='body' onChange={this.addNote} value={''}/>
 		</div>)
 		return (
-			<div onClick={this.handleSubmit} className="modal">
+			<div className="modal">
 				<form className="note-form">
 					<input onChange={this.editTitle} name='title' value={this.state.title} placeholder="title"/>
 					{
@@ -119,7 +137,8 @@ export class NoteForm extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-	postNote: (note) => dispatch(postNote(note))
+	postNote: (note) => dispatch(postNote(note)),
+	editNote: (note) => dispatch(editNote(note))
 })
 
 export default connect(null, mapDispatchToProps)(NoteForm)
