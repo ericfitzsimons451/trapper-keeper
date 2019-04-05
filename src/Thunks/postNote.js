@@ -1,4 +1,5 @@
-import { addNote, isLoading, hasError } from "../actions";
+import { addNote, isLoading, hasError } from '../actions'
+
 export const postNote = (newNote) => {
     const option = {
         method: "POST",
@@ -7,7 +8,7 @@ export const postNote = (newNote) => {
             'Content-Type': 'application/json'
         }
     }
-  return async (dispatch) => { 
+    return async (dispatch) => {
         try {
             dispatch(isLoading(true))
             const response = await fetch('http://localhost:3000/api/v1/notes', option)
@@ -20,7 +21,5 @@ export const postNote = (newNote) => {
         } catch (error) {
             dispatch(hasError(error.message))
         }
-
     }
-  };
-};
+}
