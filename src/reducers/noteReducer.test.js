@@ -14,10 +14,9 @@ describe('noteReducer', () => {
 
     it('should return a note when the action.type is ADD_NOTE', () => {
         const mockNote = {title: 'asdl', body: 'a;lsdkjf'}
-        //this test passes whether or not we include the type.  Why?
         const mockAction = actions.addNote(mockNote)
         const results = noteReducer(mockState, mockAction)
-        expect(results).toBe(mockNote)
+        expect(results).toEqual([mockNote])
     })
 
     it('should return an array of notes when the action.type is GET_ALL_NOTES', () => {
@@ -25,7 +24,6 @@ describe('noteReducer', () => {
             {title: 'asdl', body: 'a;lsdkjf'},
             {title: 'asdfasdf', body: 'asdfasdfasdfsdf'}
         ]
-        //this passes even without the type, just as above.  Why?
         const mockAction = actions.getAllNotes(mockNotes)
         const results = noteReducer(mockState, mockAction)
         expect(results).toEqual(mockNotes)

@@ -18,6 +18,7 @@ class App extends Component {
       <div className="App">
         <Header/>
         <NavLink to='/notes'>Create New Note</NavLink>
+
         <Route exact path='/notes' component={NoteForm} />
         <Route exact path='/notes/:id' render={({match}) =>{
           const foundNote = this.props.notes.find(note => {
@@ -29,6 +30,7 @@ class App extends Component {
             return <NoteForm note={foundNote}/>
           }
         }}/>
+
         <NotesContainer/>
       </div>
     );
