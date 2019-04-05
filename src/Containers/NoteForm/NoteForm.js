@@ -14,7 +14,7 @@ export class NoteForm extends Component {
 	}
 
 	componentDidMount () {
-		if(this.props.note){
+		if (this.props.note) {
 			this.setState({
 				title: this.props.note.title,
 				listItem: this.props.note.listItem
@@ -24,7 +24,7 @@ export class NoteForm extends Component {
 
 	addNote = (e) => {
 		const { id } = e.target.parentElement
-		if(e.target.value !== null){
+		if (e.target.value !== null) {
 			this.setState({
 				listItems: [...this.state.listItems, {id: parseInt(id), text: e.target.value, checked: false}]
 			})
@@ -44,7 +44,7 @@ export class NoteForm extends Component {
 	toggleCheckBox = (e) => {
 		const { id } = e.target.parentElement
 		const newBody = this.state.listItems.map((note) => {
-			if(note.id === parseInt(id)){
+			if (note.id === parseInt(id)) {
 				return {text: note.text, checked: !note.checked, id: note.id}
 			}
 			return note
@@ -58,7 +58,7 @@ export class NoteForm extends Component {
 		const { id } = e.target.parentElement
 		const { value } = e.target
 		const newBody = this.state.listItems.map((note) => {
-			if(note.id === parseInt(id)){
+			if (note.id === parseInt(id)) {
 				return {text: value, checked: note.checked, id: note.id}
 			}
 			return note
@@ -77,20 +77,20 @@ export class NoteForm extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault()
-		if(this.props.note){
+		if (this.props.note) {
 			const updatedNote = {
 				id: this.props.note.id,
 				title: this.state.title,
 				listItem: this.state.listItem
 			}
 			this.props.editNote(updatedNote)
-		}else{
+		} else {
 			const {className, type } = e.target
 			console.log(e.target.type)
 			if (className === "modal" || type === "submit") {
 				this.props.history.push('/')
 				this.props.postNote(this.state)
-				}
+			}
 		}
 	}
 
@@ -100,23 +100,29 @@ export class NoteForm extends Component {
 		const filteredUnChecked = listItems.filter(note => !note.checked)
 		const filteredChecked = listItems.filter(note => note.checked)
 		const unchecked = filteredUnChecked.map((text)=> {
-			return (<div onChange={this.test} key={text.id} id={text.id} className="text">
-						<div onClick={this.toggleCheckBox} className="uncheckbox"></div>
-						<input  placeholder="take a note" name='body' onChange={this.editNoteText} value={text.text}/>
-						<div onClick={this.deleteNote} className="xmark"></div>
-					</div>)
+			return (
+			<div onChange={this.test} key={text.id} id={text.id} className="text">
+				<div onClick={this.toggleCheckBox} className="uncheckbox"></div>
+				<input  placeholder="take a note" name='body' onChange={this.editNoteText} value={text.text}/>
+				<div onClick={this.deleteNote} className="xmark"></div>
+			</div>
+			)
 		})
 		const checked = filteredChecked.map((text)=> {
-			return (<div onChange={this.test} key={text.id} id={text.id} className="text">
-						<div onClick={this.toggleCheckBox} className="checkbox"></div>
-						<input  placeholder="take a note" name='body' onChange={this.editNoteText} value={text.text}/>
-						<div onClick={this.deleteNote} className="xmark"></div>
-					</div>)
+			return (
+			<div onChange={this.test} key={text.id} id={text.id} className="text">
+				<div onClick={this.toggleCheckBox} className="checkbox"></div>
+				<input  placeholder="take a note" name='body' onChange={this.editNoteText} value={text.text}/>
+				<div onClick={this.deleteNote} className="xmark"></div>
+			</div>
+			)
 		})
-		unchecked.push(<div onChange={this.test} key={id} id={id} className="text">
+		unchecked.push(
+		<div onChange={this.test} key={id} id={id} className="text">
 			<div className="add"></div>
 			<input  placeholder="take a note" name='body' onChange={this.addNote} value={''}/>
-		</div>)
+		</div>
+		)
 		return (
 			<div className="modal">
 				<form className="note-form">

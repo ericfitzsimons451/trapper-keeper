@@ -7,7 +7,6 @@ export const noteReducer = (state = [], action) => {
     case "GET_ALL_NOTES":
       return action.notes;
     case "UPDATE_NOTE":
-      console.log('Update Note Reducer fires')
       const noteIdIndex = state.find(note => {
         return note.id == action.note.id
       })
