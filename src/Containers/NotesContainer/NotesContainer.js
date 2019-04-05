@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchAllNotes} from "../../Thunks/fetchAllNotes";
+import { fetchAllNotes } from "../../Thunks/fetchAllNotes";
 import { deleteNote } from "../../Thunks/deleteNote";
 import { Link } from "react-router-dom";
 
 export class NotesContainer extends Component {
- 
 
   async componentDidMount() {
     const url = "http://localhost:3000/api/v1/notes";
@@ -16,13 +15,13 @@ export class NotesContainer extends Component {
     if (this.props.notes.length > 0) {
       return (
         <ul>
-          {this.props.notes.map((note,index ) => {
+          {this.props.notes.map((note, index ) => {
             return (
               <Link to={`/notes/${note.id}`} key={index}>
                 <li>{note.id}</li>
                 <button onClick={() => {this.props.deleteNote(note.id)}}>DELETE ME</button>
                 <li>
-                  {note.listItem.map(body => {
+                  {note.listItems.map(body => {
                     return <div key={body.id}>{body.text}</div>;
                   })}
                 </li>
@@ -46,7 +45,6 @@ export const mapStateToProps = state => ({
 export const mapDispatchToProps = dispatch => ({
   fetchAllNotes: url => dispatch(fetchAllNotes(url)),
   deleteNote: note => dispatch(deleteNote(note))
-
 });
 
 export default connect(
