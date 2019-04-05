@@ -23,3 +23,8 @@ export const isLoading = (bool) => ({
   isLoading: bool
 })
 
+export const updateNote = (note) => ({
+  type: 'UPDATE_NOTE',
+  note
+})
+

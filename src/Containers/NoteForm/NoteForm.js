@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { postNote } from '../../Thunks/postNote'
 import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
-import { fetchAllNotes } from '../../Thunks/fetchAllNotes'
+import { editNote } from '../../Thunks/updateNote'
  
 export class NoteForm extends Component {
 	constructor() {
@@ -79,7 +79,12 @@ export class NoteForm extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault()
 		if(this.props.note){
-			
+			const updatedNote = {
+				id: this.props.note.id,
+				title: this.props.note.title,
+				listItem: this.props.note.listItem
+			}
+			this.props.editNote(updatedNote)
 		}else{
 			const {className, type } = e.target
 			console.log(e.target.type)
@@ -133,7 +138,8 @@ export class NoteForm extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-	postNote: (note) => dispatch(postNote(note))
+	postNote: (note) => dispatch(postNote(note)),
+	editNote: (note) => dispatch(editNote(note))
 })
 
 export default connect(null, mapDispatchToProps)(NoteForm)
