@@ -13,6 +13,16 @@ export class NoteForm extends Component {
 		}
 	}
 
+	componentDidMount () {
+		console.log(this.props.note)
+		if(this.props.note){
+			this.setState({
+				title: this.props.note.title,
+				listItem: this.props.note.listItem
+			})
+		}
+	}
+
 	addNote = (e) => {
 		const { id } = e.target.parentElement
 		if(e.target.value !== null){
@@ -68,12 +78,16 @@ export class NoteForm extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault()
-		const {className, type } = e.target
-		console.log(e.target.type)
-		if (className === "modal" || type === "submit") {
-			this.props.history.push('/')
-			this.props.postNote(this.state)
-		  }
+		if(this.props.note){
+			
+		}else{
+			const {className, type } = e.target
+			console.log(e.target.type)
+			if (className === "modal" || type === "submit") {
+				this.props.history.push('/')
+				this.props.postNote(this.state)
+				}
+		}
 	}
 
 	render() {
