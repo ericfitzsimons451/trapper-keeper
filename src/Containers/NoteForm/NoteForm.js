@@ -14,7 +14,6 @@ export class NoteForm extends Component {
 	}
 
 	componentDidMount () {
-		console.log(this.props.note)
 		if(this.props.note){
 			this.setState({
 				title: this.props.note.title,
@@ -81,8 +80,8 @@ export class NoteForm extends Component {
 		if(this.props.note){
 			const updatedNote = {
 				id: this.props.note.id,
-				title: this.props.note.title,
-				listItem: this.props.note.listItem
+				title: this.state.title,
+				listItem: this.state.listItem
 			}
 			this.props.editNote(updatedNote)
 		}else{
@@ -119,7 +118,7 @@ export class NoteForm extends Component {
 			<input  placeholder="take a note" name='body' onChange={this.addNote} value={''}/>
 		</div>)
 		return (
-			<div onClick={this.handleSubmit} className="modal">
+			<div className="modal">
 				<form className="note-form">
 					<input onChange={this.changeTitle} name='title' value={this.state.title} placeholder="title"/>
 					{

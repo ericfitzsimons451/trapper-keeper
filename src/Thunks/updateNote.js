@@ -18,7 +18,8 @@ export const editNote = (noteToUpdate) => {
       }
       const note = await response.json()
       dispatch(isLoading(false))
-      dispatch(updateNote(note))
+      console.log(noteToUpdate)
+      dispatch(updateNote(noteToUpdate))
     } catch (error) {
       dispatch(hasError(error.message))
     }

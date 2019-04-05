@@ -7,8 +7,12 @@ export const noteReducer = (state = [], action) => {
     case "GET_ALL_NOTES":
       return action.notes;
     case "UPDATE_NOTE":
-      const noteIdIndex = state.findIndexOf(action.note.id);
-      state.splice(noteIdIndex, 1, action.note)
+      console.log('Update Note Reducer fires')
+      const noteIdIndex = state.find(note => {
+        return note.id == action.note.id
+      })
+      const index = state.indexOf(noteIdIndex)
+      state.splice(index, 1, action.note)
       return state
     default:
       return state;
