@@ -19,6 +19,16 @@ class App extends Component {
         <Header/>
         <NavLink to='/notes'>Create New Note</NavLink>
         <Route exact path='/notes' component={NoteForm} />
+        <Route exact path='/notes/:id' render={({match}) =>{
+          const foundNote = this.props.notes.find(note => {
+            return note.id === parseInt(match.params.id)
+          })
+          if(!foundNote){
+            console.log('404')
+          }else {
+            return <NoteForm note={foundNote}/>
+          }
+        }}/>
         <NotesContainer/>
       </div>
     );
