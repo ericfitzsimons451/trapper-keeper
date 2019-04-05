@@ -68,7 +68,12 @@ export class NoteForm extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault()
-		this.props.postNote(this.state)
+		const {className, type } = e.target
+		console.log(e.target.type)
+		if (className === "modal" || type === "submit") {
+			this.props.history.push('/')
+			this.props.postNote(this.state)
+		  }
 	}
 
 	render() {
@@ -95,18 +100,20 @@ export class NoteForm extends Component {
 			<input  placeholder="take a note" name='body' onChange={this.addNote} value={''}/>
 		</div>)
 		return (
-			<form className="note-form">
-				<input onChange={this.changeTitle} name='title' value={this.state.title} placeholder="title"/>
-				{
-					unchecked
-				}
-				{
-					checked
-				}
-				<nav>
-					<Link to="/"><button onClick={this.handleSubmit}>Save Note</button></Link>
-				</nav>
-			</form>
+			<div onClick={this.handleSubmit} className="modal">
+				<form className="note-form">
+					<input onChange={this.changeTitle} name='title' value={this.state.title} placeholder="title"/>
+					{
+						unchecked
+					}
+					{
+						checked
+					}
+					<nav>
+						<button onClick={this.handleSubmit}>Save Note</button>
+					</nav>
+				</form>
+			</div>
 		)
 	}
 }
