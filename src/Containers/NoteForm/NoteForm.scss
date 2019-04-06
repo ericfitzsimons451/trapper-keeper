@@ -5,12 +5,18 @@
     width: 100%;
     height: 100%;
     background: rgba($color: #000000, $alpha: 0.5);
+    .title-input {
+        border: none;
+        outline: none;
+        font-size: 2em;
+        margin: 0px 10px;
+    }
     .note-form {
         background: #ffffff;
         margin: 100px auto;
         width: 600px;
-        height: 200px;
-        padding: 20px;
+        min-height: 100px;
+        padding: 20px 0px;
         box-shadow: 2px 2px 5px grey;
         border-radius: 5px;
         display: flex;
@@ -19,15 +25,42 @@
 }
 
 .text {
+    border-top: 1px solid #ffffff;
+        border-bottom: 1px solid #ffffff;
+    box-sizing: content-box;
+    padding: 10px;
     display: flex;
     margin: 5px;
     input{
         width: 90%;
         margin: 0px 10px;
     }
+    .xmark {
+        cursor: pointer;
+        transition: 0.2s;
+        opacity: 0;
+        height: 15px;
+        width: 15px;
+        background-image: url("./images/close-button.svg");
+        background-size: 15px 15px;
+    }
+    &:hover{
+        .xmark {
+            opacity: 1;
+        } 
+    }
+    &:focus-within {
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+    }
+    input {
+        border: none;
+        outline: none;
+    }
 }
 
 .uncheckbox {
+    cursor: pointer;
     height: 15px;
     width: 15px;
     background-image: url("./images/blank-square.svg");
@@ -35,16 +68,10 @@
 }
 
 .checkbox {
+    cursor: pointer;
     height: 15px;
     width: 15px;
     background-image: url("./images/check-box.svg");
-    background-size: 15px 15px;
-}
-
-.xmark {
-    height: 15px;
-    width: 15px;
-    background-image: url("./images/close-button.svg");
     background-size: 15px 15px;
 }
 
