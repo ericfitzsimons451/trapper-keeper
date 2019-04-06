@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { deleteNote } from "../../Thunks/deleteNote";
-import { Link } from "react-router-dom"
+import { editNote } from "../../Thunks/updateNote";
 import { connect } from "react-redux"
 
 export class Note extends Component{
@@ -27,8 +27,17 @@ export class Note extends Component{
         });
         this.setState({
           listItems: newBody
-        });
+        }, this.editNoteCheck);
       };
+
+      editNoteCheck = async () => {
+        const updatedNote = {
+            id: this.props.note.id,
+            title: this.props.note.title,
+            listItems: this.state.listItems
+          };
+          await this.props.editNote(updatedNote);
+      }
 
       openNote = e => {
           console.log(e.target.className)
@@ -52,7 +61,7 @@ export class Note extends Component{
             return (
               <div key={text.id} id={text.id} className="text">
                 <div onClick={this.toggleCheckBox} className="checkbox" />
-                <p>{text.text}</p>
+                <p className="check-text">{text.text}</p>
                 </div>
             );
           });
@@ -82,7 +91,8 @@ export class Note extends Component{
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-    deleteNote: note => dispatch(deleteNote(note))
+    deleteNote: note => dispatch(deleteNote(note)),
+    editNote: note => dispatch(editNote(note))
 })
 
 export default connect(null, mapDispatchToProps)(Note)
