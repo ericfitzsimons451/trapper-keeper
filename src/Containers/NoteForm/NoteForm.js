@@ -144,7 +144,7 @@ export class NoteForm extends Component {
     return (
       <div className="modal">
         <form className="note-form">
-          <input
+          <input className="title-input"
             onChange={this.editTitle}
             name="title"
             value={this.state.title}
