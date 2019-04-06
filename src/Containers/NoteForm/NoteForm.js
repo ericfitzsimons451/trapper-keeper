@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { postNote } from '../../Thunks/postNote'
-import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
 import { editNote } from '../../Thunks/updateNote'
  
@@ -17,7 +16,7 @@ export class NoteForm extends Component {
 		if (this.props.note) {
 			this.setState({
 				title: this.props.note.title,
-				listItem: this.props.note.listItem
+				listItems: this.props.note.listItems
 			})
 		}
 	}
@@ -81,12 +80,11 @@ export class NoteForm extends Component {
 			const updatedNote = {
 				id: this.props.note.id,
 				title: this.state.title,
-				listItem: this.state.listItem
+				listItems: this.state.listItems
 			}
 			this.props.editNote(updatedNote)
 		} else {
 			const {className, type } = e.target
-			console.log(e.target.type)
 			if (className === "modal" || type === "submit") {
 				this.props.history.push('/')
 				this.props.postNote(this.state)
@@ -101,7 +99,7 @@ export class NoteForm extends Component {
 		const filteredChecked = listItems.filter(note => note.checked)
 		const unchecked = filteredUnChecked.map((text)=> {
 			return (
-			<div onChange={this.test} key={text.id} id={text.id} className="text">
+			<div key={text.id} id={text.id} className="text">
 				<div onClick={this.toggleCheckBox} className="uncheckbox"></div>
 				<input  placeholder="take a note" name='body' onChange={this.editNoteText} value={text.text}/>
 				<div onClick={this.deleteNote} className="xmark"></div>
@@ -110,7 +108,7 @@ export class NoteForm extends Component {
 		})
 		const checked = filteredChecked.map((text)=> {
 			return (
-			<div onChange={this.test} key={text.id} id={text.id} className="text">
+			<div key={text.id} id={text.id} className="text">
 				<div onClick={this.toggleCheckBox} className="checkbox"></div>
 				<input  placeholder="take a note" name='body' onChange={this.editNoteText} value={text.text}/>
 				<div onClick={this.deleteNote} className="xmark"></div>
@@ -118,7 +116,7 @@ export class NoteForm extends Component {
 			)
 		})
 		unchecked.push(
-		<div onChange={this.test} key={id} id={id} className="text">
+		<div key={id} id={id} className="text">
 			<div className="add"></div>
 			<input  placeholder="take a note" name='body' onChange={this.addNote} value={''}/>
 		</div>
