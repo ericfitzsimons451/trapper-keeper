@@ -6,11 +6,40 @@ import { connect } from "react-redux"
 export class Note extends Component{
     constructor(){
         super();
+        this.state = {
+            listItems: [] 
+        }
     }
 
+    componentDidMount = () => {
+        this.setState({
+            listItems: this.props.note.listItems
+        })
+    }
+
+    toggleCheckBox = e => {
+        const { id } = e.target.parentElement;
+        const newBody = this.state.listItems.map(note => {
+          if (note.id === parseInt(id)) {
+            return { text: note.text, checked: !note.checked, id: note.id };
+          }
+          return note;
+        });
+        this.setState({
+          listItems: newBody
+        });
+      };
+
+      openNote = e => {
+          console.log(e.target.className)
+        if(e.target.className !== "checkbox" && e.target.className !== "uncheckbox" && e.target.className !== "delete-button" ){
+            this.props.history.push(`/notes/${this.props.note.id}`)
+        }
+      }
+
     render = () => {
-        const filteredUnChecked = this.props.note.listItems.filter(note => !note.checked);
-        const filteredChecked = this.props.note.listItems.filter(note => note.checked);
+        const filteredUnChecked = this.state.listItems.filter(note => !note.checked);
+        const filteredChecked = this.state.listItems.filter(note => note.checked);
         const unchecked = filteredUnChecked.map(text => {
             return (
               <div key={text.id} id={text.id} className="text">
@@ -28,13 +57,12 @@ export class Note extends Component{
             );
           });
         return(
-            <div className="note">
-                <button class="delete-button"
+            <div className="note" onClick={this.openNote}>
+                <button className="delete-button"
                   onClick={() => {
                     this.props.deleteNote(this.props.note.id);
                   }}
                 ></button>
-                <Link to={`/notes/${this.props.note.id}`} key={this.props.note.id}>
                 <h2>{this.props.note.title}</h2>
                 {
                     unchecked
@@ -48,7 +76,6 @@ export class Note extends Component{
                         </div>
                     )
                 }
-                </Link>
             </div>
         )
     }
