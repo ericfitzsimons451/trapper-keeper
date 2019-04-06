@@ -5,7 +5,6 @@ import { deleteNote } from "../../Thunks/deleteNote";
 import { Link } from "react-router-dom";
 
 export class NotesContainer extends Component {
-
   async componentDidMount() {
     const url = "http://localhost:3000/api/v1/notes";
     await fetchAllNotes(url);
@@ -15,17 +14,26 @@ export class NotesContainer extends Component {
     if (this.props.notes.length > 0) {
       return (
         <ul>
-          {this.props.notes.map((note, index ) => {
+          {this.props.notes.map((note, index) => {
             return (
-              <Link to={`/notes/${note.id}`} key={index}>
-                <li>{note.id}</li>
-                <button onClick={() => {this.props.deleteNote(note.id)}}>DELETE ME</button>
-                <li>
-                  {note.listItems.map(body => {
-                    return <div key={body.id}>{body.text}</div>;
-                  })}
-                </li>
-              </Link>
+              <div>
+                <button
+                  onClick={() => {
+                    this.props.deleteNote(note.id);
+                  }}
+                >
+                  DELETE ME
+                </button>
+
+                <Link to={`/notes/${note.id}`} key={index}>
+                  <li>{note.id}</li>
+                  <li>
+                    {note.listItems.map(body => {
+                      return <div key={body.id}>{body.text}</div>;
+                    })}
+                  </li>
+                </Link>
+              </div>
             );
           })}
         </ul>
