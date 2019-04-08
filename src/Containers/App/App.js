@@ -17,7 +17,6 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <NavLink to="/new-note">Create New Note</NavLink>
         <Route exact path="/new-note" component={NoteForm} />
         <Route
           exact

@@ -15,7 +15,8 @@ export class NotesContainer extends Component {
       return (
         <div className="notes-container">
           {this.props.notes.map((note) => {
-            return <Note note={note} history={this.props.history} />;
+            return  <Note key={note.id} note={note} history={this.props.history}/> ;
+
           })}
         </div>
       );

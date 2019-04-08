@@ -4,12 +4,13 @@
     position: fixed;
     width: 100%;
     height: 100%;
+    overflow: scroll;
     background: rgba($color: #000000, $alpha: 0.5);
     .title-input {
         border: none;
         outline: none;
         font-size: 2em;
-        margin: 0px 10px;
+        margin: 0px 12px;
     }
     .note-form {
         background: #ffffff;
@@ -34,6 +35,12 @@
     input{
         width: 90%;
         margin: 0px 10px;
+        &:-webkit-autofill,
+&:-webkit-autofill:hover, 
+&:-webkit-autofill:focus, 
+&:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
     }
     .xmark {
         cursor: pointer;
