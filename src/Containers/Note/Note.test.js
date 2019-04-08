@@ -11,7 +11,7 @@ describe('Note', () => {
         expect(wrapper.state('listItems')).to.equal({ asdf: 'hello'})
     })
 
-    it.skip('should mapDispatchToProps', () => {
+    it('should mapDispatchToProps', () => {
         const mockDispatch = jest.fn()
         const mockNote = [
             {id: 1242, title: "test", 
@@ -55,11 +55,11 @@ describe('Note', () => {
         })
     })
 
-    describe('editNoteCheck', () => {
+    describe.skip('editNoteCheck', () => {
         const fakeUpdate = {
             id: 4,
             title: 'title',
-            listItems:/;
+            listItems: []
         }
     })
 })

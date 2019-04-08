@@ -1,7 +1,7 @@
 import { deleteNote } from '../../Thunks/deleteNote'
 import * as actions from '../../actions'
 
-describe.skip('deleteNote', () => {
+describe('deleteNote', () => {
     let mockNote;
     let mockDispatch;
     beforeEach(() => {
