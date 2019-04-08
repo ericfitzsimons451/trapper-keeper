@@ -99,9 +99,9 @@ export class NoteForm extends Component {
   render() {
     const { listItems } = this.state;
     const id = Date.now();
-    const filteredUnChecked = listItems.filter(note => !note.checked);
-    const filteredChecked = listItems.filter(note => note.checked);
-    const unchecked = filteredUnChecked.map(text => {
+    const filteredUncheckedNotes = listItems.filter(note => !note.checked);
+    const filteredCheckedNotes = listItems.filter(note => note.checked);
+    const uncheckedNotes = filteredUncheckedNotes.map(text => {
       return (
         <div key={text.id} id={text.id} className="text">
           <div onClick={this.toggleCheckBox} className="uncheckbox" />
@@ -115,7 +115,7 @@ export class NoteForm extends Component {
         </div>
       );
     });
-    const checked = filteredChecked.map(text => {
+    const checkedNotes = filteredCheckedNotes.map(text => {
       return (
         <div key={text.id} id={text.id} className="text">
           <div onClick={this.toggleCheckBox} className="checkbox" />
@@ -129,7 +129,7 @@ export class NoteForm extends Component {
         </div>
       );
     });
-    unchecked.push(
+    uncheckedNotes.push(
       <div key={id} id={id} className="text">
         <div className="add" />
         <input
@@ -149,8 +149,8 @@ export class NoteForm extends Component {
             value={this.state.title}
             placeholder="title"
           />
-          {unchecked}
-          {checked}
+          {uncheckedNotes}
+          {checkedNotes}
           <nav>
             <button onClick={this.handleSubmit}>Save Note</button>
           </nav>
