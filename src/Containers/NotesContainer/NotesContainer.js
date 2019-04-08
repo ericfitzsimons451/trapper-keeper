@@ -4,6 +4,7 @@ import { fetchAllNotes } from "../../Thunks/fetchAllNotes";
 import Note from "../Note/Note"
 
 export class NotesContainer extends Component {
+  
   async componentDidMount() {
     const url = "http://localhost:3000/api/v1/notes";
     await fetchAllNotes(url);
@@ -14,7 +15,7 @@ export class NotesContainer extends Component {
       return (
         <div className="notes-container">
           {this.props.notes.map((note) => {
-            return  <Note note={note} history={this.props.history}/> ;
+            return <Note note={note} history={this.props.history} />;
           })}
         </div>
       );
