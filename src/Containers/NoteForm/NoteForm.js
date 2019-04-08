@@ -112,7 +112,7 @@ export class NoteForm extends Component {
             onChange={this.editNoteText}
             value={text.text}
           />
-          <div onClick={this.deleteNote} className="xmark" />
+          <div onClick={this.deleteNote} className="xmark"/>
         </div>
       );
     });
@@ -126,7 +126,7 @@ export class NoteForm extends Component {
             onChange={this.editNoteText}
             value={text.text}
           />
-          <div onClick={this.deleteNote} className="xmark" />
+          <div onClick={this.deleteNote} className="xmark"/>
         </div>
       );
     });

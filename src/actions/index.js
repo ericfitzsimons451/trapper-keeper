@@ -28,3 +28,14 @@ export const updateNote = (note) => ({
   note
 })
 
+export const startDrag = (id) => ({
+  type: "START_ID",
+  id
+})
+
+export const changeNoteOrder = (noteOne, noteTwo) => ({
+  type: "CHANGE_ORDER",
+  noteOne,
+  noteTwo
+})
+
