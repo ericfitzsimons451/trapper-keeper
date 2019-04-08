@@ -96,10 +96,4 @@ describe("NoteForm", () => {
     });
     expect(wrapper.state("title")).toEqual("It passes");
   });
-
-  it.only("should call editNote when handleSubmit is called", () => {
-    console.log(wrapper.instance().props.note)
-    wrapper.instance().handleSubmit();
-    expect(wrapper.instance().props.editNote).toHaveBeenCalled()
-  });
 });
