@@ -16,8 +16,25 @@ exports[`NoteForm should match the snapshot with all data passed in correctly 1`
     />
     <div
       className="text"
-      id={1554755378381}
-      key="1554755378381"
+    >
+      <div
+        className="uncheckbox"
+        onClick={[Function]}
+      />
+      <input
+        name="body"
+        onChange={[Function]}
+        placeholder="take a note"
+      />
+      <div
+        className="xmark"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="text"
+      id={1554757123047}
+      key="1554757123047"
     >
       <div
         className="add"
