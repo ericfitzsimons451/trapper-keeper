@@ -2,6 +2,6 @@
 
 exports[`Header should match the snapshot with all data passed in correctly 1`] = `
 <div>
-  I am a stateless header
+  Trapper Keeper
 </div>
 `;

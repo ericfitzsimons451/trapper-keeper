@@ -8,7 +8,7 @@ describe("Header", () => {
 		wrapper = shallow(<Header/>);
 	});
 
-	it.skip("should match the snapshot with all data passed in correctly", () => {
+	it("should match the snapshot with all data passed in correctly", () => {
 		expect(wrapper).toMatchSnapshot();
     })
 })
