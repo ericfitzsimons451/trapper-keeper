@@ -16,9 +16,8 @@ export const editNote = (noteToUpdate) => {
       if (!response.ok) {
         throw new Error(response.statusText)
       }
-      const note = await response.json()
+      // const note = await response.json()
       dispatch(isLoading(false))
-      console.log(noteToUpdate)
       dispatch(updateNote(noteToUpdate))
     } catch (error) {
       dispatch(hasError(error.message))
