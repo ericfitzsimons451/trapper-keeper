@@ -3,6 +3,7 @@ import { deleteNote } from "../../Thunks/deleteNote";
 import { editNote } from "../../Thunks/updateNote";
 import { startDrag } from "../../actions"
 import { changeNoteOrder } from "../../actions"
+import { patchNotes } from "../../Thunks/patchNotes"
 import { connect } from "react-redux"
 
 export class Note extends Component{
@@ -43,7 +44,6 @@ export class Note extends Component{
       }
 
     openNote = e => {
-          console.log(e.target.className)
         if(e.target.className !== "checkbox" && e.target.className !== "uncheckbox" && e.target.className !== "delete-button" ){
             this.props.history.push(`/notes/${this.props.note.id}`)
         }
@@ -56,6 +56,10 @@ export class Note extends Component{
             this.props.changeNoteOrder(this.props.startID, id)
         }
      }
+
+    onDragEnd = () => {
+        this.props.patchNotes(this.props.notes)
+    }
 
     render = () => {
         const filteredUnChecked = this.state.listItems.filter(note => !note.checked);
@@ -77,7 +81,7 @@ export class Note extends Component{
             );
           });
         return(
-            <div draggable onDragStart={() => {this.props.startDrag(this.props.note.id)}} onDragOver={() => {this.onDragOver(this.props.note.id)}} onDragEnd={() => {console.log("hello world")}} className="note" onClick={this.openNote}>
+            <div draggable onDragStart={() => {this.props.startDrag(this.props.note.id)}} onDragOver={() => {this.onDragOver(this.props.note.id)}} onDragEnd={this.onDragEnd} className="note" onClick={this.openNote}>
                 <button className="delete-button"
                   onClick={() => {
                     this.props.deleteNote(this.props.note.id);
@@ -105,11 +109,13 @@ export const mapDispatchToProps = (dispatch) => ({
     deleteNote: note => dispatch(deleteNote(note)),
     editNote: note => dispatch(editNote(note)),
     startDrag: id => dispatch(startDrag(id)),
-    changeNoteOrder: (noteOne, noteTwo) => dispatch(changeNoteOrder(noteOne, noteTwo))
+    changeNoteOrder: (noteOne, noteTwo) => dispatch(changeNoteOrder(noteOne, noteTwo)),
+    patchNotes: notes => dispatch(patchNotes(notes))
 })
 
 export const mapStateToProps = (state) => ({
-    startID: state.startID
+    startID: state.startID,
+    notes: state.notes
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Note)
