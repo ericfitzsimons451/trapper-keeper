@@ -32,7 +32,7 @@ describe('postNote', () => {
             json: () => Promise.resolve(
                 mockNote
             )
-        }))
+        })) 
         const thunk = postNote(mockNote)
         await thunk(mockDispatch)
         expect(mockDispatch).toHaveBeenCalledWith(actions.isLoading(false))

@@ -4,9 +4,12 @@ import { Header } from './Header'
 
 describe('Header', () => {
 	let wrapper;
-	
-	it('should match the snapshot', () => {
-		wrapper = shallow(<Header />)
-		expect(wrapper).toMatchSnapshot()
-	})
+  
+	beforeEach(() => {
+		wrapper = shallow(<Header/>);
+	});
+
+	it("should match the snapshot with all data passed in correctly", () => {
+		expect(wrapper).toMatchSnapshot();
+    })
 })
