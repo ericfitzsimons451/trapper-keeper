@@ -13,7 +13,6 @@ export class NoteForm extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.history);
     if (this.props.note) {
       this.setState({
         title: this.props.note.title,
