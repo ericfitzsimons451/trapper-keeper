@@ -7,7 +7,7 @@ import { editNote } from '../../Thunks/updateNote'
 jest.mock('../../Thunks/deleteNote')
 jest.mock('../../Thunks/updateNote')
 
-describe('Note', () => {
+describe.skip[('Note', () => {
     let wrapper;
     let mockNote;
     let mockState;
