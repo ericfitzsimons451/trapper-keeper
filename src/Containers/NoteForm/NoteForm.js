@@ -96,9 +96,9 @@ export class NoteForm extends Component {
     }
   };
 
-  displayFilteredCheckedNotes = () => {
-    const filteredCheckedNotes = this.state.listItems.filter(note => note.checked);
-    const checkedNotes = filteredCheckedNotes.map(text => {
+  displayCheckedListItems = () => {
+    const filteredCheckedListItems = this.state.listItems.filter(note => note.checked);
+    const checkedListItems = filteredCheckedListItems.map(text => {
       return (
         <div key={text.id} id={text.id} className="text">
           <div onClick={this.toggleCheckBox} className="checkbox" />
@@ -112,14 +112,13 @@ export class NoteForm extends Component {
         </div>
       );
     });
-    return checkedNotes
+    return checkedListItems
   }
 
   render() {
-    const { listItems } = this.state;
-    
-    const filteredUncheckedNotes = listItems.filter(note => !note.checked);
-    const uncheckedNotes = filteredUncheckedNotes.map(text => {
+    const { listItems } = this.state; 
+    const filteredUncheckedListItems = listItems.filter(listItem => !listItem.checked);
+    const uncheckedListItems = filteredUncheckedListItems.map(text => {
       return (
         <div key={text.id} id={text.id} className="text">
           <div onClick={this.toggleCheckBox} className="uncheckbox" />
@@ -135,7 +134,7 @@ export class NoteForm extends Component {
     });
     
     const id = Date.now();
-    uncheckedNotes.push(
+    uncheckedListItems.push(
       <div key={id} id={id} className="text">
         <div className="add" />
         <input
@@ -147,7 +146,7 @@ export class NoteForm extends Component {
       </div>
     );
     
-    const checkedNotes = this.displayCheckedNotes
+    const checkedListItems = this.displayCheckedListItems
 
     return (
       <div className="modal">
@@ -158,8 +157,8 @@ export class NoteForm extends Component {
             value={this.state.title}
             placeholder="title"
           />
-          {uncheckedNotes}
-          {checkedNotes}
+          {uncheckedListItems}
+          {checkedListItems}
           <nav>
             <button onClick={this.handleSubmit}>Save Note</button>
           </nav>
