@@ -146,7 +146,7 @@ export class NoteForm extends Component {
       </div>
     );
     
-    const checkedListItems = this.displayCheckedListItems
+    const checkedListItems = this.displayCheckedListItems()
 
     return (
       <div className="modal">
