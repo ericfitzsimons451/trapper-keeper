@@ -12,13 +12,14 @@ export class NotesContainer extends Component {
   }
 
   render() {
-    if (this.props.notes.length > 0) {
+    const { notes, history } = this.props
+    const displayNotes = notes.map((note, i) => {
+      return  <Note key={i} note={note} history={history}/> ;
+    })
+    if (notes.length > 0) {
       return (
         <div className="notes-container">
-          {this.props.notes.map((note, i) => {
-            return  <Note key={i} note={note} history={this.props.history}/> ;
-
-          })}
+          {displayNotes}
         </div>
       );
     } else {

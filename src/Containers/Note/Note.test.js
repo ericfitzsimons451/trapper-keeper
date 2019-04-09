@@ -5,7 +5,7 @@ import { shallow } from 'enzyme'
 import { deleteNote } from '../../Thunks/deleteNote'
 jest.mock('../../Thunks/deleteNote')
 
-describe.skip('Note', () => {
+describe('Note', () => {
 	let wrapper;
 	let mockNote;
 	let mockState;
