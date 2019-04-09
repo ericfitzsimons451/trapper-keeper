@@ -18,6 +18,10 @@
 
 ```npm start```
 
+## NOTE: This is only the front-end repository for this application.  To clone the back-end repository, please visit: 
+
+## https://github.com/Inzurriaga/trapper-keeper-api.git
+
 ## Background/About
 
 ### This 10-day project asked teams of 3 people to create a backend for our application.  It was our first foray into the world of Node.js, Express and creating endpoints for our front-end to utilize.  This project was a chance to solidify our knowledge of using Redux and Thunks inside a React application, explicitly route pathways using Router, as well as implement a Jest/Enzyme test suite.
