@@ -2,36 +2,39 @@ import React from "react";
 import { shallow } from "enzyme";
 import { NoteForm } from "./NoteForm";
 
-describe.skip("NoteForm", () => {
+describe.only("NoteForm", () => {
   let wrapper;
   const mockFunc = jest.fn();
-  const mockData = { listItems: [1], title: "" };
+  const mockState = { 
+                      title: '',
+                      listItems: []
+}
 
   beforeEach(() => {
-    wrapper = shallow(<NoteForm postNote={mockFunc} editNote={mockFunc} note={mockData} />);
+    wrapper = shallow(<NoteForm postNote={mockFunc} editNote={mockFunc}  />);
   });
 
   it("should have a proper default state", () => {
-    expect(wrapper.state()).toEqual({
-      title: "",
-      listItems: [1]
-    });
+    expect(wrapper.state()).toEqual(mockState);
   });
 
   it("should match the snapshot with all data passed in correctly", () => {
     expect(wrapper).toMatchSnapshot();
   });
-
-  it("should test if state is changed when AddNote is invoked", () => {
-    expect(wrapper.state("listItems")).toEqual([1]);
-    wrapper.instance().addNote({
-      target: {
-        parentElement: {
-          id: 12
-        }
+  
+  describe('addListItem', () => {
+    
+  })
+  it.only("should updateState when AddNote is invoked", () => {
+    const mockEvent = {target: {
+      parentElement: {
+        id: 12
       }
-    });
-    expect(wrapper.state("listItems")).toHaveLength(2);
+    }}
+    
+    expect(wrapper.state("listItems")).toHaveLength(0);
+   
+    expect(wrapper.state("listItems")).toEqual();
   });
 
   it("should test if state is changed when componentDidMount is invoked", () => {

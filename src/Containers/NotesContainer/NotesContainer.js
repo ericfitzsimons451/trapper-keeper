@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchAllNotes } from "../../Thunks/fetchAllNotes";
 import Note from "../Note/Note"
+import Loader from '../../Components/Loader/Loader'
 
 export class NotesContainer extends Component {
   
@@ -21,7 +22,7 @@ export class NotesContainer extends Component {
         </div>
       );
     } else {
-      return <div>Loading</div>;
+      return <Loader />;
     }
   }
 }

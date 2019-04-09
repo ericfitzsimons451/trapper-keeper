@@ -132,8 +132,8 @@ export class NoteForm extends Component {
         </div>
       );
     });
-    
     const id = Date.now();
+    
     uncheckedListItems.push(
       <div key={id} id={id} className="text">
         <div className="add" />

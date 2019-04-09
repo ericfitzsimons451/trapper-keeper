@@ -36,11 +36,11 @@
         width: 90%;
         margin: 0px 10px;
         &:-webkit-autofill,
-&:-webkit-autofill:hover, 
-&:-webkit-autofill:focus, 
-&:-webkit-autofill:active  {
-    -webkit-box-shadow: 0 0 0 30px white inset !important;
-}
+        &:-webkit-autofill:hover, 
+        &:-webkit-autofill:focus, 
+        &:-webkit-autofill:active  {
+            -webkit-box-shadow: 0 0 0 30px white inset !important;
+        }
     }
     .xmark {
         cursor: pointer;
@@ -50,15 +50,15 @@
         width: 15px;
         background-image: url("./images/close-button.svg");
         background-size: 15px 15px;
-    }
-    &:hover{
-        .xmark {
-            opacity: 1;
-        } 
-    }
-    &:focus-within {
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
+        &:hover{
+            .xmark {
+                opacity: 1;
+            } 
+        }
+        &:focus-within {
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+        }
     }
     input {
         border: none;
