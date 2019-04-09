@@ -1,7 +1,6 @@
-import * as actions from '../actions'
 import { startID } from '../reducers/startIDReducer'
 
-describe.only('startID', () => {
+describe('startID', () => {
     const mockState = 0
     let mockAction;
     it('should return state as a default', () => {
@@ -16,6 +15,6 @@ describe.only('startID', () => {
             id: 10
         }
         const results = startID(mockState, mockAction)
-        expect(results).toEqual(mockAction)
+        expect(results).toEqual(mockAction.id)
     })
 })

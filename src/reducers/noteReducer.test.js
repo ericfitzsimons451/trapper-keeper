@@ -1,14 +1,14 @@
 import { noteReducer } from './noteReducer'
 import * as actions from '../actions'
 
-describe('noteReducer', () => {
+describe.only('noteReducer', () => {
     let mockState;
     let mockNotes
     beforeEach(() => {
         mockState = []
         mockNotes =[
-            {title: 'asdl', body: 'a;lsdkjf'},
-            {title: 'asdfasdf', body: 'asdfasdfasdfsdf'}
+            {id: 1, title: 'asdl', body: 'a;lsdkjf'},
+            {id: 2, title: 'asdfasdf', body: 'asdfasdfasdfsdf'}
         ]
     })
     it('should return default state where there is no action.type', () => {
@@ -43,6 +43,16 @@ describe('noteReducer', () => {
         const mockAction = actions.deleteCard(mockIds)
         const results = noteReducer(mockState, mockAction)
         expect(results).toEqual(idAfterDelete)
+    })
 
+    it('should return an array of notes when the action.type is CHANGE_ORDER', () => {
+        const mockId = 1
+        const upDatedNotes = [
+            {id: 1, title: 'asdl', body: 'a;lsdkjf'},
+            {id: 2, title: 'asdfasdf', body: 'asdfasdfasdfsdf'},
+        ]
+        const mockAction = actions.startDrag(mockId)
+        const results = noteReducer(mockNotes, mockAction)
+        expect(results).toEqual(upDatedNotes)
     })
 })

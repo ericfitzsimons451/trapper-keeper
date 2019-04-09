@@ -2,7 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import { NoteForm } from "./NoteForm";
 
-describe.only("NoteForm", () => {
+describe.skip("NoteForm", () => {
   let wrapper;
   const mockFunc = jest.fn();
   const mockState = { 
