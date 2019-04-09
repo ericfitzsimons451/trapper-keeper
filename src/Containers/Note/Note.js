@@ -66,9 +66,10 @@ export class Note extends Component {
       note => !note.checked
     );
     const filteredChecked = this.state.listItems.filter(note => note.checked);
-    const unchecked = filteredUnChecked.map(text => {
+    const unchecked = filteredUnChecked.map((text, i) => {
+      const { id } = text
       return (
-        <div key={Date.now()} id={text.id} className="text">
+        <div key={i} id={id} className="text">
           <div onClick={this.toggleCheckBox} className="uncheckbox" />
           <p>{text.text}</p>
         </div>
