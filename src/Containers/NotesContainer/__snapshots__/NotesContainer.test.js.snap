@@ -5,9 +5,11 @@ exports[`NotesContainer should match the snapshot with all data passed in 1`] = 
   className="notes-container"
 >
   <Connect(Note)
+    key="0"
     note={Object {}}
   />
   <Connect(Note)
+    key="1"
     note={Object {}}
   />
 </div>
