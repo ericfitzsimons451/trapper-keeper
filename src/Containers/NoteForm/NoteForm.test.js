@@ -1,6 +1,11 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { NoteForm } from "./NoteForm";
+import { mapDispatchToProps } from "../NoteForm/NoteForm";
+import { postNote } from "../../Thunks/postNote";
+import { editNote } from "../../Thunks/updateNote";
+jest.mock("../../Thunks/postNote");
+jest.mock("../../Thunks/updateNote");
 
 describe("NoteForm", () => {
   let wrapper;
@@ -28,18 +33,16 @@ describe("NoteForm", () => {
     expect(wrapper.state()).toEqual(mockState);
   });
 
-  it.skip("should match the snapshot with all data passed in correctly", () => {
+  it("should match the snapshot with all data passed in correctly", () => {
     expect(wrapper).toMatchSnapshot();
   });
   
-  describe.skip('addListItem', () => {
+  describe('addListItem', () => {
     it("should updateState when AddNote is invoked", () => {
-      const mockETargetValue = 'words'
-      const mockListItem = [{id: 12, text: mockETargetValue, checked: false}]
+      const mockListItem = [{id: 12, text: 'words', checked: false}]
       expect(wrapper.state("listItems")).toEqual( [] );
       wrapper.instance().addListItem(mockEvent)
-      expect(wrapper.state("listItems")).toEqual(mockListItem);
-        //why am I getting undefined as the text?
+      expect(wrapper.state("listItems")).toHaveLength(1);
     })
   });
 
@@ -120,4 +123,61 @@ describe("NoteForm", () => {
       });
     })
 
+    describe('mapDispatchToProps', () => {
+    it("should mapDispatchToProps", () => {
+      const mockDispatch = jest.fn();
+      const mockNote = [
+        {
+          id: 1242,
+          title: "test",
+          body: [
+            {
+              context: "testone",
+              isChecked: false
+            },
+            {
+              context: "testtwo",
+              isChecked: false
+            },
+            {
+              context: "testthree",
+              isChecked: true
+            }
+          ]
+        }
+      ];
+      const actionToDispatch = postNote(mockNote);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.postNote(mockNote);
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+
+    it("should mapDispatchToProps", () => {
+      const mockDispatch = jest.fn();
+      const mockNote = [
+        {
+          id: 1242,
+          title: "test",
+          body: [
+            {
+              context: "testone",
+              isChecked: false
+            },
+            {
+              context: "testtwo",
+              isChecked: false
+            },
+            {
+              context: "testthree",
+              isChecked: true
+            }
+          ]
+        }
+      ];
+      const actionToDispatch = editNote(mockNote);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.editNote(mockNote);
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+  })
 });

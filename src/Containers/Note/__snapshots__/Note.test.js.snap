@@ -19,8 +19,7 @@ exports[`Note should match the snapshot 1`] = `
   <div
     className="text"
     id={4}
-
-    key="1554840452907"
+    key="0"
   >
     <div
       className="uncheckbox"
@@ -33,7 +32,7 @@ exports[`Note should match the snapshot 1`] = `
   <div
     className="text"
     id={5}
-    key="1554840452907"
+    key="1"
   >
     <div
       className="uncheckbox"

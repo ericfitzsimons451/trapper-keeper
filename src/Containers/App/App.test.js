@@ -33,8 +33,16 @@ describe("App", () => {
   })
 
   it("should match the snapshot with all data passed in correctly", () => {
+    wrapper.setProps({notes:mockNote})
     expect(wrapper).toMatchSnapshot();
   });
+
+  describe('Conditional render', () => {
+    it('should render the conditional', () => {
+      wrapper.setProps({notes:[]})
+      expect(wrapper).toMatchSnapshot();
+    })
+  })
 
   describe('componentDidMount', () => {
     it('should fire fetchAllNotes inside of componentDidMount', async () => {
