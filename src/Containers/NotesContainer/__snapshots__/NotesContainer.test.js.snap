@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotesContainer should match the snapshot with all data passed in 1`] = `
+<div
+  className="notes-container"
+>
+  <Connect(Note)
+    note={Object {}}
+  />
+  <Connect(Note)
+    note={Object {}}
+  />
+</div>
+`;
+
+exports[`NotesContainer should render the Loader if there are no notes 1`] = `<Loader />`;
