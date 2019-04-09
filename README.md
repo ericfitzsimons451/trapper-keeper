@@ -35,6 +35,11 @@
 
 ## Future Iterations
 
+- Login component for unique experiences.
+- Clicking off of the card implements a save feature.
+- Email address validation.
+- Allow users to change the color of the cards for better organization.
+
 ## Wireframe
 <img width="799" alt="Screen Shot 2019-04-01 at 2 59 15 PM" src="https://user-images.githubusercontent.com/39415039/55359304-c1802200-548e-11e9-93a6-69ae1b766e44.png">
 
