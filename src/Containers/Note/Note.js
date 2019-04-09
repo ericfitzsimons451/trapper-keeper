@@ -6,7 +6,6 @@ import { changeNoteOrder } from "../../actions";
 import { connect } from "react-redux";
 
 export class Note extends Component {
-  // refactor to take out constructor
   constructor() {
     super();
     this.state = {
@@ -31,13 +30,20 @@ export class Note extends Component {
     this.setState(
       {
         listItems: newBody
-      },
-      this.editNoteCheck
-    );
+      }
+    , this.editNoteCheck);
   };
 
+  editNoteCheck = async () => {
+    const updatedNote = {
+      id: this.props.note.id,
+      title: this.props.note.title,
+      listItems: this.state.listItems
+    };
+    await this.props.editNote(updatedNote)
+  }
+
   openNote = e => {
-    console.log(e.target.className);
     if (
       e.target.className !== "checkbox" &&
       e.target.className !== "uncheckbox" &&
@@ -86,7 +92,6 @@ export class Note extends Component {
           this.onDragOver(this.props.note.id);
         }}
         onDragEnd={() => {
-          console.log("hello world");
         }}
         className="note"
         onClick={this.openNote}
