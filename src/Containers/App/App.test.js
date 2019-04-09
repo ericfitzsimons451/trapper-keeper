@@ -36,8 +36,6 @@ describe("App", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-
-
   describe('componentDidMount', () => {
     it('should fire fetchAllNotes inside of componentDidMount', async () => {
       expect(mockFetchAllNotes).toHaveBeenCalledWith("http://localhost:3000/api/v1/notes")
@@ -71,5 +69,4 @@ describe("App", () => {
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
     });
   })
-
 })

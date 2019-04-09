@@ -19,6 +19,7 @@ exports[`Note should match the snapshot 1`] = `
   <div
     className="text"
     id={4}
+
     key="1554840452907"
   >
     <div
