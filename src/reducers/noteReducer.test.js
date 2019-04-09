@@ -46,13 +46,11 @@ describe('noteReducer', () => {
     })
 
     it('should return an array of notes when the action.type is CHANGE_ORDER', () => {
-        const mockId = 1
-        const upDatedNotes = [
-            {id: 1, title: 'asdl', body: 'a;lsdkjf'},
+        const updatedNotes =[
             {id: 2, title: 'asdfasdf', body: 'asdfasdfasdfsdf'},
+            {id: 1, title: 'asdl', body: 'a;lsdkjf'}
         ]
-        const mockAction = actions.startDrag(mockId)
-        const results = noteReducer(mockNotes, mockAction)
-        expect(results).toEqual(upDatedNotes)
+        const results = noteReducer(mockNotes, actions.changeNoteOrder(1,2))
+        expect(results).toEqual(updatedNotes)
     })
 })

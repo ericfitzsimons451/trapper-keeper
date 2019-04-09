@@ -13,7 +13,7 @@ describe("App", () => {
     wrapper = shallow(<App />)
   })
 
-  it.skip("should match the snapshot with all data passed in correctly", () => {
+  it("should match the snapshot with all data passed in correctly", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -32,7 +32,7 @@ describe("App", () => {
     expect(mappedProps).toEqual(expected)
   });
 
-  it.skip("should map dispatch to props", () => {
+  it("should map dispatch to props", () => {
     const mockDispatch = jest.fn()
     const mockUrl = "www.reddit.com"
     const actionToDispatch = fetchAllNotes(mockUrl)
