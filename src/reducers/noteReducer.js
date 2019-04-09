@@ -24,7 +24,7 @@ export const noteReducer = (state = [], action) => {
       const findNoteTwo = noteArray.find(note => parseInt(action.noteTwo) === note.id)
       const two = noteArray.indexOf(findNoteTwo)
       const change = [noteArray[one], noteArray[two]] = [noteArray[two], noteArray[one]]
-      return noteArray;
+        return noteArray; 
     default:
       return state;
   }

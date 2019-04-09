@@ -6,11 +6,11 @@ import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 jest.mock('../../Thunks/fetchAllNotes')
 
-describe('NotesContainer', () => {
+describe.only('NotesContainer', () => {
    
     let wrapper
 
-    it.skip('should render', () => {
+    it('should render', () => {
         let component = shallow(<NotesContainer />)
         const tree = toJson(component)
         expect(tree).toMatchSnapshot()

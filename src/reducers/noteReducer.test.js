@@ -1,7 +1,7 @@
 import { noteReducer } from './noteReducer'
 import * as actions from '../actions'
 
-describe.only('noteReducer', () => {
+describe('noteReducer', () => {
     let mockState;
     let mockNotes
     beforeEach(() => {
