@@ -7,6 +7,7 @@ import { fetchAllNotes } from "../../Thunks/fetchAllNotes";
 import { Header } from "../../Components/Header/Header";
 import NotesContainer from "../NotesContainer/NotesContainer";
 import Error from '../../Components/Error/Error'
+import PropTypes from "prop-types";
 
 export class App extends Component {
  
@@ -43,6 +44,12 @@ export class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  notes: PropTypes.array,
+  errorMsg: PropTypes.string,
+  isLoading: PropTypes.bool
+};
 
 export const mapStateToProps = state => ({
   notes: state.notes,

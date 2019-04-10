@@ -5,6 +5,7 @@ import { startDrag } from "../../actions"
 import { changeNoteOrder } from "../../actions"
 import { patchNotes } from "../../Thunks/patchNotes"
 import { connect } from "react-redux"
+import PropTypes from "prop-types";
 
 export class Note extends Component {
   constructor() {
@@ -113,6 +114,11 @@ export class Note extends Component {
     )
   }
 }
+
+Note.propTypes = {
+  notes: PropTypes.array,
+  startID: PropTypes.number
+};
 
 export const mapDispatchToProps = (dispatch) => ({
   deleteNote: note => dispatch(deleteNote(note)),

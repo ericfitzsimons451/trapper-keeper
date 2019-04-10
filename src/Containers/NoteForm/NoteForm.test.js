@@ -13,6 +13,7 @@ describe("NoteForm", () => {
   let mockState;
   let mockEvent;
 
+
   beforeEach(() => {
     wrapper = shallow(<NoteForm postNote={mockFunc} editNote={mockFunc}  />);
     mockFunc = jest.fn();
@@ -76,13 +77,26 @@ describe("NoteForm", () => {
     });
   })
 
-  // describe('handleSubmit', () => {
-  //   it.only("should invoke editNote handleSubmit", async () => {
-  //     const e = mockFunc
-  //     wrapper.instance().handleSubmit(e)
-  //     await expect(editNote).toHaveBeenCalled( );
-  //   });
-  // })
+  describe('handleSubmit', () => {
+    let wrapper
+    const mockProps = {
+      note: [1],
+      postNote: jest.fn(),
+      editNote: jest.fn()
+    }
+    it.skip("should invoke postNote handleSubmit", async () => {
+      wrapper = shallow(<NoteForm {...mockProps}/>)
+      const e = mockFunc
+      wrapper.instance().handleSubmit(e)
+      await expect(mockProps.postNote).toHaveBeenCalled( );
+    });
+
+    it.skip("should invoke editNote handleSubmit", async () => {
+      const e = mockFunc
+      wrapper.instance().handleSubmit(e)
+      await expect(mockProps.editNote).toHaveBeenCalled( );
+    });
+  })
   
   describe('toggleCheckBox', () => {
     it("should toggle the checkbox when toggleCheckBox is invoked", () => {
