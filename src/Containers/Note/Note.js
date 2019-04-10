@@ -57,10 +57,6 @@ export class Note extends Component{
         }
      }
 
-    onDragEnd = () => {
-        this.props.patchNotes(this.props.notes)
-    }
-
     render = () => {
         const filteredUnChecked = this.state.listItems.filter(note => !note.checked);
         const filteredChecked = this.state.listItems.filter(note => note.checked);
@@ -81,7 +77,9 @@ export class Note extends Component{
             );
           });
         return(
-            <div draggable onDragStart={() => {this.props.startDrag(this.props.note.id)}} onDragOver={() => {this.onDragOver(this.props.note.id)}} onDragEnd={this.onDragEnd} className="note" onClick={this.openNote}>
+            <div draggable onDragStart={() => {this.props.startDrag(this.props.note.id)}} onDragOver={() => {this.onDragOver(this.props.note.id)}} onDragEnd={() => {
+                this.props.patchNotes(this.props.notes)
+            }} className="note" onClick={this.openNote}>
                 <button className="delete-button"
                   onClick={() => {
                     this.props.deleteNote(this.props.note.id);
