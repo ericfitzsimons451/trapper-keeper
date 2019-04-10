@@ -1,16 +1,30 @@
 header {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    border-bottom: 1px solid #e0e0e0;
-    h1 {
-        color: #767676;
-        text-align: left;
-    }
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	border-bottom: 1px solid #e0e0e0;
+	background: #fff;
+  	// background-image: 
+    // 	url("https://www.transparenttextures.com/patterns/dark-tire.png");
+	h1 {
+		color: #767676;
+		text-align: left;
+		margin-left: 1rem;
+	}
 }
 
 .new-note-style-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.create-new {
+	margin-right: 1rem;
+	border: solid 1px;
+	color: #767676;
+	padding: 10px;
+	border-radius: 15px;
+	background: #fff;
+	text-decoration: none;
 }
