@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchAllNotes } from "../../Thunks/fetchAllNotes";
 import Note from "../Note/Note"
+import PropTypes from "prop-types"
 import Loader from '../../Components/Loader/Loader'
 
 export class NotesContainer extends Component {
@@ -31,6 +32,13 @@ export class NotesContainer extends Component {
       return <Loader />;
     }
   }
+}
+
+NotesContainer.propTypes = {
+  fetchAllNotes: PropTypes.func,
+  notes: PropTypes.array,
+  errorMsg: PropTypes.string,
+  isLoading: PropTypes.bool
 }
 
 export const mapStateToProps = state => ({

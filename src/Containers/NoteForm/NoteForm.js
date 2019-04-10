@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { postNote } from "../../Thunks/postNote";
 import { connect } from "react-redux";
+import PropTypes from "prop-types"
 import { editNote } from "../../Thunks/updateNote";
 
 export class NoteForm extends Component {
@@ -166,6 +167,11 @@ export class NoteForm extends Component {
       </div>
     );
   }
+}
+
+NoteForm.propTypes = {
+  postNote: PropTypes.func,
+  editNote: PropTypes.func
 }
 
 export const mapDispatchToProps = dispatch => ({
