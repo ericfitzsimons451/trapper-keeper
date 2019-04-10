@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoteForm should match the snapshot with all data passed in correctly 1`] = `
+<div
+  className="modal"
+>
+  <form
+    className="note-form"
+  >
+    <input
+      className="title-input"
+      name="title"
+      onChange={[Function]}
+      placeholder="title"
+      value=""
+    />
+    <div
+      className="text"
+      id={1554845624506}
+      key="1554845624506"
+    >
+      <div
+        className="add"
+      />
+      <input
+        name="body"
+        onChange={[Function]}
+        placeholder="take a note"
+        value=""
+      />
+    </div>
+    <Component />
+    <nav>
+      <button
+        onClick={[Function]}
+      >
+        Save Note
+      </button>
+    </nav>
+  </form>
+</div>
+`;

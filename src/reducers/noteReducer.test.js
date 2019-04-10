@@ -3,8 +3,13 @@ import * as actions from '../actions'
 
 describe('noteReducer', () => {
     let mockState;
+    let mockNotes
     beforeEach(() => {
         mockState = []
+        mockNotes =[
+            {id: 1, title: 'asdl', body: 'a;lsdkjf'},
+            {id: 2, title: 'asdfasdf', body: 'asdfasdfasdfsdf'}
+        ]
     })
     it('should return default state where there is no action.type', () => {
         const mockAction = {}
@@ -20,12 +25,32 @@ describe('noteReducer', () => {
     })
 
     it('should return an array of notes when the action.type is GET_ALL_NOTES', () => {
-        const mockNotes =[
-            {title: 'asdl', body: 'a;lsdkjf'},
-            {title: 'asdfasdf', body: 'asdfasdfasdfsdf'}
-        ]
+       
         const mockAction = actions.getAllNotes(mockNotes)
         const results = noteReducer(mockState, mockAction)
         expect(results).toEqual(mockNotes)
+    })
+
+    it('should return an ID when the action.type is UPDATE_NOTE', () => {
+        const mockAction = actions.updateNote(mockNotes[0])
+        const results = noteReducer(mockState, mockAction)
+        expect(results).toEqual([mockNotes[0]])
+    })
+
+    it('should return an ID when the action.type is DELETE_CARD', () => {
+        const mockIds = [1]
+        const idAfterDelete = []
+        const mockAction = actions.deleteCard(mockIds)
+        const results = noteReducer(mockState, mockAction)
+        expect(results).toEqual(idAfterDelete)
+    })
+
+    it('should return an array of notes when the action.type is CHANGE_ORDER', () => {
+        const updatedNotes =[
+            {id: 2, title: 'asdfasdf', body: 'asdfasdfasdfsdf'},
+            {id: 1, title: 'asdl', body: 'a;lsdkjf'}
+        ]
+        const results = noteReducer(mockNotes, actions.changeNoteOrder(1,2))
+        expect(results).toEqual(updatedNotes)
     })
 })

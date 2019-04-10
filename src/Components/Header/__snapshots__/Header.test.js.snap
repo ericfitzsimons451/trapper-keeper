@@ -1,7 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header should match the snapshot with all data passed in correctly 1`] = `
-<div>
-  I am a stateless header
-</div>
+<header
+  className="header"
+>
+  <h1>
+    Trapper Keeper
+  </h1>
+  <NavLink
+    to="/new-note"
+  >
+    Create New Note
+  </NavLink>
+</header>
 `;

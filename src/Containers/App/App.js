@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import NoteForm from "../NoteForm/NoteForm";
-import { NavLink, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import "./App.scss";
 import { connect } from "react-redux";
 import { fetchAllNotes } from "../../Thunks/fetchAllNotes";
 import { Header } from "../../Components/Header/Header";
 import NotesContainer from "../NotesContainer/NotesContainer";
 
-class App extends Component {
+export class App extends Component {
   async componentDidMount() {
     const url = "http://localhost:3000/api/v1/notes";
     this.props.fetchAllNotes(url);

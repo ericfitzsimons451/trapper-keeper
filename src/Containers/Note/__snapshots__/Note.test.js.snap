@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Note should match the snapshot 1`] = `
+<div
+  className="note"
+  draggable={true}
+  onClick={[Function]}
+  onDragEnd={[Function]}
+  onDragOver={[Function]}
+  onDragStart={[Function]}
+>
+  <button
+    className="delete-button"
+    onClick={[Function]}
+  />
+  <h2>
+    hello
+  </h2>
+  <div
+    className="text"
+    id={4}
+    key="0"
+  >
+    <div
+      className="uncheckbox"
+      onClick={[Function]}
+    />
+    <p>
+      yo
+    </p>
+  </div>
+  <div
+    className="text"
+    id={5}
+    key="1"
+  >
+    <div
+      className="uncheckbox"
+      onClick={[Function]}
+    />
+    <p>
+      hello
+    </p>
+  </div>
+</div>
+`;

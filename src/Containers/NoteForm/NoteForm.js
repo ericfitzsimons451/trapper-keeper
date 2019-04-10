@@ -13,7 +13,6 @@ export class NoteForm extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.history);
     if (this.props.note) {
       this.setState({
         title: this.props.note.title,
@@ -22,7 +21,7 @@ export class NoteForm extends Component {
     }
   }
 
-  addNote = e => {
+  addListItem = e => {
     const { id } = e.target.parentElement;
     if (e.target.value !== null) {
       this.setState({
@@ -34,7 +33,7 @@ export class NoteForm extends Component {
     }
   };
 
-  deleteNote = e => {
+  deleteListItem = e => {
     const { id } = e.target.parentElement;
     const newBody = this.state.listItems.filter(note => {
       return note.id !== parseInt(id);
@@ -57,14 +56,14 @@ export class NoteForm extends Component {
     });
   };
 
-  editNoteText = e => {
+  editListItemText = e => {
     const { id } = e.target.parentElement;
     const { value } = e.target;
-    const newBody = this.state.listItems.map(note => {
-      if (note.id === parseInt(id)) {
-        return { text: value, checked: note.checked, id: note.id };
+    const newBody = this.state.listItems.map(listItem => {
+      if (listItem.id === parseInt(id)) {
+        return { text: value, checked: listItem.checked, id: listItem.id };
       }
-      return note;
+      return listItem;
     });
     this.setState({
       listItems: newBody
@@ -97,50 +96,58 @@ export class NoteForm extends Component {
     }
   };
 
-  render() {
-    const { listItems } = this.state;
-    const id = Date.now();
-    const filteredUnChecked = listItems.filter(note => !note.checked);
-    const filteredChecked = listItems.filter(note => note.checked);
-    const unchecked = filteredUnChecked.map(text => {
-      return (
-        <div key={text.id} id={text.id} className="text">
-          <div onClick={this.toggleCheckBox} className="uncheckbox" />
-          <input
-            placeholder="take a note"
-            name="body"
-            onChange={this.editNoteText}
-            value={text.text}
-          />
-          <div onClick={this.deleteNote} className="xmark"/>
-        </div>
-      );
-    });
-    const checked = filteredChecked.map(text => {
+  displayCheckedListItems = () => {
+    const filteredCheckedListItems = this.state.listItems.filter(note => note.checked);
+    const checkedListItems = filteredCheckedListItems.map(text => {
       return (
         <div key={text.id} id={text.id} className="text">
           <div onClick={this.toggleCheckBox} className="checkbox" />
           <input
             placeholder="take a note"
             name="body"
-            onChange={this.editNoteText}
+            onChange={this.editListItemText}
             value={text.text}
           />
-          <div onClick={this.deleteNote} className="xmark"/>
+          <div onClick={this.deleteListItem} className="xmark"/>
         </div>
       );
     });
-    unchecked.push(
+    return checkedListItems
+  }
+
+  render() {
+    const { listItems } = this.state; 
+    const filteredUncheckedListItems = listItems.filter(listItem => !listItem.checked);
+    const uncheckedListItems = filteredUncheckedListItems.map(text => {
+      return (
+        <div key={text.id} id={text.id} className="text">
+          <div onClick={this.toggleCheckBox} className="uncheckbox" />
+          <input
+            placeholder="take a note"
+            name="body"
+            onChange={this.editListItemText}
+            value={text.text}
+            />
+          <div onClick={this.deleteListItem} className="xmark"/>
+        </div>
+      );
+    });
+    
+    const id = Date.now();
+    uncheckedListItems.push(
       <div key={id} id={id} className="text">
         <div className="add" />
         <input
           placeholder="take a note"
           name="body"
-          onChange={this.addNote}
+          onChange={this.addListItem}
           value={""}
-        />
+          />
       </div>
     );
+    
+    const checkedListItems = this.displayCheckedListItems()
+
     return (
       <div className="modal">
         <form className="note-form">
@@ -150,8 +157,8 @@ export class NoteForm extends Component {
             value={this.state.title}
             placeholder="title"
           />
-          {unchecked}
-          {checked}
+          {uncheckedListItems}
+          {checkedListItems}
           <nav>
             <button onClick={this.handleSubmit}>Save Note</button>
           </nav>

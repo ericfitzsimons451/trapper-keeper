@@ -2,24 +2,33 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchAllNotes } from "../../Thunks/fetchAllNotes";
 import Note from "../Note/Note"
+import Loader from '../../Components/Loader/Loader'
 
 export class NotesContainer extends Component {
+  
   async componentDidMount() {
     const url = "http://localhost:3000/api/v1/notes";
     await fetchAllNotes(url);
   }
 
+  displayAllNotes = () => {
+    const { notes, history } = this.props
+    return notes.map((note, i) => {
+      return  <Note key={i} note={note} history={history}/> ;
+    })
+  }
+
   render() {
-    if (this.props.notes.length > 0) {
+    const { notes } = this.props
+    const displayNotes = this.displayAllNotes()
+    if (notes.length > 0) {
       return (
         <div className="notes-container">
-          {this.props.notes.map((note) => {
-            return  <Note key={note.id} note={note} history={this.props.history}/> ;
-          })}
+          {displayNotes}
         </div>
       );
     } else {
-      return <div>Loading</div>;
+      return <Loader />;
     }
   }
 }
