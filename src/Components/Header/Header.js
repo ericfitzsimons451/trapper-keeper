@@ -3,12 +3,12 @@ import { NavLink } from "react-router-dom";
 import "./Header.scss";
 
 export const Header = () => {
-    return (
-      <header className="header">
-          <h1>Trapper Keeper</h1>
-          <div className='new-note-style-container'>
-            <NavLink to="/new-note" className='button'>Create New Note</NavLink>
-          </div>
-      </header>
-    )
+  return (
+    <header className="header">
+      <h1>Trapper Keeper</h1>
+      <div className='new-note-style-container'>
+        <NavLink to="/new-note" className='button'>Create New Note</NavLink>
+      </div>
+    </header>
+  )
 };
