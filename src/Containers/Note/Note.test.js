@@ -3,7 +3,9 @@ import React from 'react'
 import { Note } from './Note'
 import { mapDispatchToProps, mapStateToProps } from './Note'
 import { shallow } from 'enzyme'
+import { startDrag, changeNoteOrder } from "../../actions"
 import { deleteNote } from '../../Thunks/deleteNote'
+import { editNote } from "../../Thunks/updateNote"
 jest.mock('../../Thunks/deleteNote')
 
 describe('Note', () => {
@@ -142,6 +144,42 @@ describe('Note', () => {
 			it('should do nothing if the id matched the props.startID', () => {
 
 			})
-	})
+    })
+    
+    describe("mapDispatchToProps", () => {
+        it("should called deleteNote  with input argument", () => {
+            const mockDispatch = jest.fn();
+            const mockNoteID = 123;
+            const actionToDispatch = deleteNote(mockNoteID);
+            const mappedProps = mapDispatchToProps(mockDispatch);
+            mappedProps.deleteNote(mockNoteID);
+            expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+        });
+        it("should called editNote  with input argument", () => {
+            const mockDispatch = jest.fn();
+            const mockNoteID = 123;
+            const actionToDispatch = editNote(mockNoteID);
+            const mappedProps = mapDispatchToProps(mockDispatch);
+            mappedProps.editNote(mockNoteID);
+            expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+        });
+        it("should called startDrag with input argument", () => {
+            const mockDispatch = jest.fn();
+            const mockNoteID = 123;
+            const actionToDispatch = startDrag(mockNoteID);
+            const mappedProps = mapDispatchToProps(mockDispatch);
+            mappedProps.startDrag(mockNoteID);
+            expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+        });
+        it("should called changeNoteOrder with input argument", () => {
+            const mockDispatch = jest.fn();
+            const mockNoteIDOne = 1;
+            const mockNoteIDTwo = 2;
+            const actionToDispatch = changeNoteOrder(mockNoteIDOne, mockNoteIDTwo);
+            const mappedProps = mapDispatchToProps(mockDispatch);
+            mappedProps.changeNoteOrder(mockNoteIDOne, mockNoteIDTwo);
+            expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+        })
+    })
 
 })
