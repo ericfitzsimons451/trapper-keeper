@@ -31,8 +31,9 @@
 	}
 	
 	p {
-		margin: 0px 0px 0px 10px;
-		text-wrap: wrap;
+		margin: 0px 0px 0px 0px;
+		overflow: hidden;
+		word-wrap: break-word;
 	}
 	h2 {
 		margin: 10px 0px 0px 15px;
@@ -47,4 +48,8 @@
 
 .check-text {
 	text-decoration: line-through; 
+}
+
+.uncheck-box {
+	margin-right: 55px;
 }
