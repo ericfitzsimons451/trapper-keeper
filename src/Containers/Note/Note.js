@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { deleteNote } from "../../Thunks/deleteNote";
 import { editNote } from "../../Thunks/updateNote";
-import { startDrag } from "../../actions";
-import { changeNoteOrder } from "../../actions";
+import { changeNoteOrder, startDrag } from "../../actions";
 import { connect } from "react-redux";
 
 export class Note extends Component {
