@@ -16,8 +16,10 @@ exports[`NoteForm should match the snapshot with all data passed in correctly 1`
     />
     <div
       className="text"
-      id={1554863459497}
-      key="1554863459497"
+
+      id={1554865859369}
+      key="1554865859369"
+
     >
       <div
         className="add"
@@ -31,6 +33,7 @@ exports[`NoteForm should match the snapshot with all data passed in correctly 1`
     </div>
     <nav>
       <button
+        className="submit-btn"
         onClick={[Function]}
       >
         Save Note
