@@ -6,13 +6,15 @@ import { shallow } from 'enzyme'
 import { startDrag, changeNoteOrder } from "../../actions"
 import { deleteNote } from '../../Thunks/deleteNote'
 import { editNote } from "../../Thunks/updateNote"
+import { patchNotes } from "../../Thunks/patchNotes"
 jest.mock('../../Thunks/deleteNote')
 
 describe('Note', () => {
 	let wrapper;
 	let mockNote;
 	let mockState;
-	let mockHistory;
+    let mockHistory;
+    let mockFunction;
 
 	beforeEach(() => {
 		mockState = [
@@ -26,14 +28,17 @@ describe('Note', () => {
 				{ id: 4, text: 'yo', checked: false }, 
 				{ id: 5, text: 'hello', checked: false }
 			]
-		}
+        }
+        mockFunction = jest.fn()
 		wrapper = shallow(
 		<Note
+            startID={1}
+            patchNotes={mockFunction}
 			note={mockNote}
-			deleteNote={jest.fn()}
-			editNote={jest.fn()}
-			startDrag={jest.fn()}
-			changeNoteOrder={jest.fn()}
+			deleteNote={mockFunction}
+			editNote={mockFunction}
+			startDrag={mockFunction}
+			changeNoteOrder={mockFunction}
 			history={mockHistory} />)
 	})
 
@@ -145,6 +150,40 @@ describe('Note', () => {
 
 			})
     })
+
+    describe('onDragStart', () => {
+	    it('should called startDrag when its invoke', () => {
+            wrapper.find(".note").simulate("dragStart")
+            expect(mockFunction).toHaveBeenCalled()
+    })
+    })
+    describe('onDragEnd', () => {
+	    it('should called patchNote when its invoke', () => {
+            wrapper.find(".note").simulate("dragEnd")
+            expect(mockFunction).toHaveBeenCalled()
+    })
+    })
+    describe('Delete Button', () => {
+	    it('should called deleteNote when its invoke', () => {
+            wrapper.find(".delete-button").simulate("click")
+            expect(mockFunction).toHaveBeenCalled()
+    })
+    })
+    describe('onDragver', () => {
+	    it('should return out the function if id match itself', () => {
+            wrapper.instance().onDragOver(1)
+        })
+        it("should invoke changeNoteOrder when the ids dont match", () => {
+            wrapper.instance().onDragOver(2)
+            expect(mockFunction).toHaveBeenCalled()
+        })
+    })
+
+    describe('openNote', () => {
+	    it('should return out the function if id match itself', () => {
+            wrapper.find(".note").simulate("click", {target: {className: "note"}})
+        })
+    })
     
     describe("mapDispatchToProps", () => {
         it("should called deleteNote  with input argument", () => {
@@ -180,6 +219,13 @@ describe('Note', () => {
             mappedProps.changeNoteOrder(mockNoteIDOne, mockNoteIDTwo);
             expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
         })
+        it("should called patchNotes with input argument", () => {
+            const mockDispatch = jest.fn();
+            const mockNotes = [{},{},{}];
+            const actionToDispatch = patchNotes(mockNotes);
+            const mappedProps = mapDispatchToProps(mockDispatch);
+            mappedProps.patchNotes(mockNotes);
+            expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+        });
     })
-
 })
