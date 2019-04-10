@@ -17,8 +17,8 @@ exports[`NoteForm should match the snapshot with all data passed in correctly 1`
     <div
       className="text"
 
-      id={1554865859369}
-      key="1554865859369"
+      id={1554861839575}
+      key="1554861839575"
 
     >
       <div

@@ -5,21 +5,26 @@ exports[`App Conditional render should render the conditional 1`] = `
   className="App"
 >
   <Header />
-  <Route
-    component={[Function]}
-    exact={true}
-    path="/new-note"
-  />
-  <Route
-    exact={true}
-    path="/notes/:id"
-    render={[Function]}
-  />
-  <Route
-    component={[Function]}
-    exact={true}
-    path="/"
-  />
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/new-note"
+    />
+    <Route
+      exact={true}
+      path="/notes/:id"
+      render={[Function]}
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
+    <Route
+      component={[Function]}
+    />
+  </Switch>
 </div>
 `;
 
@@ -28,20 +33,25 @@ exports[`App should match the snapshot with all data passed in correctly 1`] = `
   className="App"
 >
   <Header />
-  <Route
-    component={[Function]}
-    exact={true}
-    path="/new-note"
-  />
-  <Route
-    exact={true}
-    path="/notes/:id"
-    render={[Function]}
-  />
-  <Route
-    component={[Function]}
-    exact={true}
-    path="/"
-  />
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/new-note"
+    />
+    <Route
+      exact={true}
+      path="/notes/:id"
+      render={[Function]}
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
+    <Route
+      component={[Function]}
+    />
+  </Switch>
 </div>
 `;

@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import NoteForm from "../NoteForm/NoteForm";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import "./App.scss";
 import { connect } from "react-redux";
 import { fetchAllNotes } from "../../Thunks/fetchAllNotes";
 import { Header } from "../../Components/Header/Header";
 import NotesContainer from "../NotesContainer/NotesContainer";
+import Error from '../../Components/Error/Error'
 
 export class App extends Component {
+ 
   async componentDidMount() {
     const url = "http://localhost:3000/api/v1/notes";
     this.props.fetchAllNotes(url);
@@ -17,21 +19,26 @@ export class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Route exact path="/new-note" component={NoteForm} />
-        <Route
-          exact
-          path="/notes/:id"
-          render={({ match, history }) => {
-            const foundNote = this.props.notes.find(note => {
-              return note.id === parseInt(match.params.id);
-            });
-            if (!foundNote) {
-            } else {
-              return <NoteForm note={foundNote} history={history} />;
-            }
-          }}
-        />
-        <Route exact path="/" component={NotesContainer} />
+        <Switch>
+          <Route exact path="/new-note" component={NoteForm} />
+          <Route
+            exact
+            path="/notes/:id"
+            render={({ match, history }) => {
+              const foundNote = this.props.notes.find(note => {
+                return note.id === parseInt(match.params.id);
+                //what is happening here with the match?
+              });
+              if (!foundNote) {
+              } else {
+                return <NoteForm note={foundNote} history={history} />;
+                //what is happening here with note and the history props?
+              }
+            }}
+          />
+          <Route exact path="/" component={NotesContainer} />
+          <Route component={Error} />
+        </Switch>
       </div>
     );
   }

@@ -3,7 +3,6 @@ import { NotesContainer } from './NotesContainer'
 import { mapStateToProps, mapDispatchToProps } from './NotesContainer'
 import { fetchAllNotes } from '../../Thunks/fetchAllNotes'
 import { shallow } from 'enzyme'
-import toJson from 'enzyme-to-json'
 jest.mock('../../Thunks/fetchAllNotes')
 
 describe.only('NotesContainer', () => {
