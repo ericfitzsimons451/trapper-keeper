@@ -50,15 +50,15 @@
         width: 15px;
         background-image: url("./images/close-button.svg");
         background-size: 15px 15px;
-        &:hover{
-            .xmark {
-                opacity: 1;
-            } 
-        }
         &:focus-within {
             border-top: 1px solid black;
             border-bottom: 1px solid black;
         }
+    }
+    &:hover{
+        .xmark {
+            opacity: 1;
+        } 
     }
     input {
         border: none;
