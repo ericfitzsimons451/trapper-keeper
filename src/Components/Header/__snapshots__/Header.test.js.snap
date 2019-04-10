@@ -11,7 +11,7 @@ exports[`Header should match the snapshot with all data passed in correctly 1`] 
     className="new-note-style-container"
   >
     <NavLink
-      className="button"
+      className="create-new"
       to="/new-note"
     >
       Create New Note
