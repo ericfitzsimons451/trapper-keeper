@@ -65,6 +65,24 @@ describe.skip("NoteForm", () => {
       expect(wrapper.state("listItems")).toEqual( [] );
     });
   })
+
+  describe('handleSubmit', () => {
+    it("should invoke handleSubmit when clicked", async () => {
+      const instance = wrapper.instance();
+      jest.spyOn(instance, "handleSubmit"); 
+      instance.forceUpdate();
+      wrapper.find('.submit-btn').simulate('click')
+      await expect(instance.handleSubmit).toHaveBeenCalled( );
+    });
+  })
+
+  // describe('handleSubmit', () => {
+  //   it.only("should invoke editNote handleSubmit", async () => {
+  //     const e = mockFunc
+  //     wrapper.instance().handleSubmit(e)
+  //     await expect(editNote).toHaveBeenCalled( );
+  //   });
+  // })
   
   describe('toggleCheckBox', () => {
     it("should toggle the checkbox when toggleCheckBox is invoked", () => {

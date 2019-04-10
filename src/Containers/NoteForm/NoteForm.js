@@ -160,7 +160,7 @@ export class NoteForm extends Component {
           {uncheckedListItems}
           {checkedListItems}
           <nav>
-            <button onClick={this.handleSubmit}>Save Note</button>
+            <button className="submit-btn" onClick={this.handleSubmit}>Save Note</button>
           </nav>
         </form>
       </div>
