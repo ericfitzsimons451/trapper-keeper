@@ -32,7 +32,9 @@
     
     p{
         margin: 0px 0px 0px 10px;
-        text-wrap: wrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 150px;
     }
     h2 {
         margin: 10px 0px 0px 15px;

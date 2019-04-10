@@ -7,7 +7,7 @@ import { editNote } from "../../Thunks/updateNote";
 jest.mock("../../Thunks/postNote");
 jest.mock("../../Thunks/updateNote");
 
-describe.skip("NoteForm", () => {
+describe("NoteForm", () => {
   let wrapper;
   let mockFunc;
   let mockState;
