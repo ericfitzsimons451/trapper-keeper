@@ -59,12 +59,9 @@ export class Note extends Component {
     }
   }
 
-
-
-  render = () => {
+  displayFilteredUnChecked = () => {
     const filteredUnChecked = this.state.listItems.filter(note => !note.checked);
-    const filteredChecked = this.state.listItems.filter(note => note.checked);
-    const unchecked = filteredUnChecked.map(text => {
+    return filteredUnChecked.map(text => {
       return (
         <div key={text.id} id={text.id} className="text">
           <div onClick={this.toggleCheckBox} className="uncheckbox" />
@@ -72,7 +69,11 @@ export class Note extends Component {
         </div>
       );
     });
+  }
 
+  render = () => {
+    const filteredChecked = this.state.listItems.filter(note => note.checked);
+    const unchecked = this.displayFilteredUnChecked()
     const checked = filteredChecked.map(text => {
       return (
         <div key={text.id} id={text.id} className="text">
