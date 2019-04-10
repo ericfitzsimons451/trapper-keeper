@@ -1,50 +1,50 @@
 .note {
-    display: inline-block;
-    text-align: left;
-    position: relative;
-    padding: 5px;
-    width: 200px;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    margin:5px;
-    .delete-button {
-        cursor: pointer;
-        border: none;
-        background: none;
-        top: -5px;
-        right: -5px;
-        outline: none;
-        height: 20px;
-        width: 20px;
-        background-image: url("./images/delete.svg");
-        background-size: 20px 20px;        
-        position: absolute;
-        transition: 0.2s;
-        opacity: 0;
-    }
-    &:hover{
-        box-shadow: 2px 2px 5px #e0e0e0;
-        .delete-button {
-            opacity: 1;
-        } 
-        cursor: pointer;
-    }
-    
-    p{
-        margin: 0px 0px 0px 10px;
-        text-wrap: wrap;
-    }
-    h2 {
-        margin: 10px 0px 0px 15px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+	display: inline-block;
+	text-align: left;
+	position: relative;
+	padding: 5px;
+	width: 200px;
+	border: 1px solid #e0e0e0;
+	border-radius: 5px;
+	margin:5px;
+	.delete-button {
+		cursor: pointer;
+		border: none;
+		background: none;
+		top: -5px;
+		right: -5px;
+		outline: none;
+		height: 20px;
+		width: 20px;
+		background-image: url("./images/delete.svg");
+		background-size: 20px 20px;        
+		position: absolute;
+		transition: 0.2s;
+		opacity: 0;
+	}
+	&:hover{
+		box-shadow: 2px 2px 5px #e0e0e0;
+		.delete-button {
+			opacity: 1;
+		} 
+		cursor: pointer;
+	}
+	
+	p {
+		margin: 0px 0px 0px 10px;
+		text-wrap: wrap;
+	}
+	h2 {
+		margin: 10px 0px 0px 15px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
 }
 
 .check-section {
-    border-top: 1px solid #e0e0e0;
+	border-top: 1px solid #e0e0e0;
 }
 
 .check-text {
-   text-decoration: line-through; 
+	text-decoration: line-through; 
 }
