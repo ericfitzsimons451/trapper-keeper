@@ -20,9 +20,10 @@ exports[`Loader should match the snapshot 1`] = `
     Start by creating a new note now!
   </h4>
   <NavLink
+    className="button"
     to="/new-note"
   >
-    Create New note
+    Create New Note
   </NavLink>
 </div>
 `;
