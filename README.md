@@ -1,15 +1,7 @@
-
 # Trapper-Keeper
 ### A web-based application for taking notes.
 
 ## Installation Steps
-
-### Clone the backend repo
-```git clone https://github.com/Inzurriaga/trapper-keeper-api.git```
-
-```npm install```
-
-```npm start```
 
 ### Clone the frontend repo
 ```git clone https://github.com/ericfitzsimons451/trapper-keeper.git```
